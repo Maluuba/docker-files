@@ -2,7 +2,6 @@ FROM ubuntu
 MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 
 EXPOSE 8080
-EXPOSE 22
 
 # Install Java
 RUN apt-get -qq update
