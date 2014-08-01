@@ -17,7 +17,7 @@ Versions:
 Then point your browser at [http://localhost:8080/](http://localhost:8080/)
 or [http://192.168.59.103:8080/](http://192.168.59.103:8080/) if you are using boot2docker
 
-Optionally you can create a local folder with sub-folders for: webapps, config and contexts. Copy your war files into __webapps__, your context xmls into __contexts__ and any custom config to be copies into ../jetty/etc/ into __config__.
+Optionally you can create a local folder with sub-folders for: webapps, config and contexts. Copy your war files into __webapps__, your context xmls into __contexts__ and any custom config to be copies into ../jetty/etc/ into __config__. In addition if you put a script called init.sh at __/etc/jetty/init.sh__ it will be executed before jetty is run. This can be used to perform any custom setup steps.   
 
     $mkdir /local/jetty
     $mkdir /local/jetty/webapps
@@ -25,6 +25,7 @@ Optionally you can create a local folder with sub-folders for: webapps, config a
     $mkdir /local/jetty/contexts
     
     $ docker run -d -p 8080:8080 -v /local/jetty:/etc/jetty -i -t maluuba/jetty
+
 
     
 ## Building

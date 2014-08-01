@@ -18,9 +18,19 @@ fi
 if [ -d /etc/jetty/contexts ];
 then
 	echo "Copying custom Contexts"
-	rm-rf /opt/jetty/contexts/*
+	rm -rf /opt/jetty/contexts/*
 	cp /etc/jetty/contexts/* /opt/jetty/contexts/
 fi
+
+
+# If check if custom init script exists
+if [ -e /etc/jetty/init.sh ];
+then
+	echo "Running custom init script"
+	chmod +x /etc/jetty/init.sh
+	/etc/jetty/init.sh
+fi
+
 
 /opt/jetty/bin/jetty.sh restart
 bash 
