@@ -13,7 +13,7 @@ Dockerfile for setting up [Docker](https://github.com/dotcloud/docker) container
     # S3PATH = the path in s3 starting with bucker name bucket-name/folder/something
     # LIMIT = The number of old backups to keep, includign this one
     # TAR_COMMANDS optionally add commands that will be given to the tar command, e.g. --exclude=*bad_file.txt
-    $ run-backup.sh AWS_ACCESS_KEY AWS_SECRET_KEY SOURCE_DIR S3PATH LIMIT [TAR_COMMANDS]"
+    $ run-backup.sh AWS_ACCESS_KEY AWS_SECRET_KEY SOURCE_DIR S3PATH LIMIT [TAR_COMMANDS]
 
 ## Building
 
