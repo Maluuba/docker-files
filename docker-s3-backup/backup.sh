@@ -21,7 +21,8 @@ fi
 
 DATE=`date +%Y-%m-%d:%H:%M:%S`
 
-tar -zvcf /backup/backup-${DATE}.tar.gz /source
+tar -zvcf /backup/backup-${DATE}.tar.gz /source ${TAR_PARAMS}
+
 s3cmd put /backup/backup-${DATE}.tar.gz s3://${S3PATH}
 
 # Delete old backups
