@@ -1,6 +1,6 @@
 # docker-s3-backup
 
-Dockerfile for setting up [Docker](https://github.com/dotcloud/docker) container with [Jetty](http://www.eclipse.org/jetty/) installed.
+Dockerfile for setting up a [Docker](https://github.com/dotcloud/docker) container which will tar up the specified directory and upload to s3.
 
 ## Pulling
 
