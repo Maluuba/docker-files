@@ -21,7 +21,7 @@ RUN useradd jetty -U -s /bin/false
 RUN chown -R jetty:jetty /opt/jetty
 
 # Install Cargo
-ADD http://repo1.maven.org/maven2/org/codehaus/cargo/cargo-jetty-7-and-onwards-deployer/1.4.4/cargo-jetty-7-and-onwards-deployer-1.4.4.war /opt/jetty/webapps/cargo-jetty-7-and-onwards-deployer-1.4.4.war
+ADD http://repo1.maven.org/maven2/org/codehaus/cargo/cargo-jetty-7-and-onwards-deployer/1.4.9/cargo-jetty-7-and-onwards-deployer-1.4.9.war /opt/jetty/webapps/cargo-jetty-7-and-onwards-deployer-1.4.9.war
 
 
 # Run Jetty
