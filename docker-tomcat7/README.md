@@ -7,10 +7,15 @@ All the docker file to deploy [Apache Tomcat 7](http://tomcat.apache.org/downloa
 
 ```
 # Place your war file(s) in local directory called deployment and add it as a volume 
+#
 # Optinally specify JAVA_OPTS to be added to default JAVA_OPTS for tomcat
+#
 # Optionally specify a custom Xmx parameter to replace default setting for tomcat
-# Optionally add a startup script at deployment/init.sh and it will be run inside the container before tomcat comes up
-$docker run -i -t -p 8080:8080 -e JAVA_OPTS='-Dsome.property=value' -e Xmx=2048m -v deployment:/deployment maluuba/tomcat7
+#
+# Optionally add a startup script at deployment/init.sh and it will be run inside the 
+#     container before tomcat comes up
+$docker run -i -t -p 8080:8080 -e JAVA_OPTS='-Dsome.property=value' 
+    -e Xmx=2048m -v deployment:/deployment maluuba/tomcat7
 ```
 Then point your browser at [http://localhost:8080/](http://localhost:8080/)
 
