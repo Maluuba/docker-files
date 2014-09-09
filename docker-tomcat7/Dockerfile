@@ -8,6 +8,7 @@ RUN apt-get -qq upgrade
 
 RUN apt-get -qq install openjdk-7-jre
 RUN apt-get -qq install tomcat7
+RUN apt-get -qq install curl
 
 ADD start-tomcat.sh /opt/start-tomcat.sh
 RUN chmod +x /opt/start-tomcat.sh

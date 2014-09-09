@@ -1,5 +1,15 @@
 #!/bin/sh
 
+
+if [ -d /deployment/init.sh ];
+then
+	echo "Running custom init script"
+	chmod +x /deployment/init.sh
+	/deployment/init.sh
+	echo "Deleting Init script"
+	rm -rf /deployment/init.sh
+fi
+
 if [ -d /deployment ];
 then
 	echo "Mapping deployed wars"
