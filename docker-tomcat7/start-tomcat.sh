@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-if [ -d /deployment/init.sh ];
+if [ -f /deployment/init.sh ];
 then
 	echo "Running custom init script"
 	chmod +x /deployment/init.sh
