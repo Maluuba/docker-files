@@ -1,7 +1,7 @@
 DockerFiles
 ===========
 
-All the docker file to deploy [Apache Tomcat 7](http://tomcat.apache.org/download-70.cgi) in a docker container.
+All the docker files to deploy [Apache Tomcat 7](http://tomcat.apache.org/download-70.cgi) in a docker container.
 
 ### Usage
 
