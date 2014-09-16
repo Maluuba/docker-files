@@ -10,11 +10,6 @@ ADD start-jenkins.sh /opt/start-jenkins.sh
 RUN chmod +x /opt/start-jenkins.sh
 RUN chmod 644 /opt/jenkins.war
 
-# Pip for installing ServiceTemplates
-RUN apt-get install libmysqlclient-dev virtualenvwrapper python-dev git libxml2-dev libxslt-dev
-RUN pip install pip==1.4.1
-RUN easy_install -U distribute
-
 ENV JENKINS_HOME /jenkins
 
 
