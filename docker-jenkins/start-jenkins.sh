@@ -1,10 +1,14 @@
 #!/bin/sh
 
-if [ -f /jenkins/init.sh ];
+JENKINS_INIT_PATH=/jenkins/init.sh
+
+if [ -f $JENKINS_INIT_PATH ];
 then
-	echo "Running custom init script"
-	chmod +x /jenkins/init.sh
-	/jenkins/init.sh
+	echo "Running custom init script: $JENKINS_INIT_PATH"
+	chmod +x $JENKINS_INIT_PATH
+	$JENKINS_INIT_PATH
+else
+        echo "No init script found at $JENKINS_INIT_PATH, you can see an example of the recommended script at https://github.com/Maluuba/deployment/blob/master$JENKINS_INIT_PATH"
 fi
 
 java -jar /opt/jenkins.war &
