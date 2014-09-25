@@ -7,6 +7,7 @@ EXPOSE 8080
 RUN apt-get -qq update
 RUN apt-get -qq upgrade
 RUN apt-get -qq install openjdk-7-jdk
+RUN apt-get -qq install bash
 
 ADD start-jetty.sh /opt/start-jetty.sh
 RUN chmod +x /opt/start-jetty.sh
