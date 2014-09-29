@@ -6,8 +6,6 @@ then
 	echo "Running custom init script"
 	chmod +x /deployment/init.sh
 	/deployment/init.sh
-	echo "Deleting Init script"
-	rm -rf /deployment/init.sh
 fi
 
 if [ -d /deployment ];
