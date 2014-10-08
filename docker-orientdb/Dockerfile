@@ -22,14 +22,8 @@ RUN apt-get -y install openjdk-7-jdk git ant
 ENV ORIENTDB_VERSION 1.7.8
 
 # Build OrientDB cleaning up afterwards
-RUN pwd
-RUN cd
-RUN pwd
-RUN git clone https://github.com/orientechnologies/orientdb.git --single-branch --depth 1 --branch $ORIENTDB_VERSION
-RUN pwd
-RUN cd orientdb
-RUN pwd
-RUN ant clean installg
+RUN cd; git clone https://github.com/orientechnologies/orientdb.git --single-branch --depth 1 --branch $ORIENTDB_VERSION
+RUN cd ~/orientdb; ant clean installg
 RUN mv /releases/orientdb-community-* /opt/orientdb
 RUN rm -rf /opt/orientdb/databases/* ~/orientdb
 
