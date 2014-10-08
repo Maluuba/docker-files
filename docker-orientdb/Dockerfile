@@ -24,7 +24,7 @@ ENV ORIENTDB_VERSION 1.7.8
 # Build OrientDB cleaning up afterwards
 RUN cd; git clone https://github.com/orientechnologies/orientdb.git --single-branch --depth 1 --branch $ORIENTDB_VERSION
 RUN cd ~/orientdb; ant clean installg
-RUN mv /releases/orientdb-community-* /opt/orientdb
+RUN mv ~/releases/orientdb-community-* /opt/orientdb
 RUN rm -rf /opt/orientdb/databases/* ~/orientdb
 
 # use supervisord to start orientdb
