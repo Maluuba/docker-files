@@ -18,7 +18,7 @@ WORKDIR /tmp/nginx-openssl/nginx-1.7.5-maluuba
 RUN ./configure.sh
 RUN make
 RUN make install
-
+RUN find /tmp/nginx-openssl -exec touch {} \;
 RUN ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.0
 ENV LD_LIBRARY_PATH /lib/x86_64-linux-gnu/
 RUN useradd nginx
