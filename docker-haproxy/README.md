@@ -2,9 +2,6 @@
 
 Dockerfile for setting up [Docker](https://github.com/dotcloud/docker) container with [HAProxy](http://www.haproxy.org/) installed.
 
-Versions:
-
-* Jetty 8.1.15
 
 ## Pulling
 
