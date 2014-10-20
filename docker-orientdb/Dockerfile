@@ -6,7 +6,7 @@
 
 FROM debian:jessie
 
-MAINTAINER Davide Marquês (nesrait@gmail.com)
+MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 
 # Update the default application repository sources list
 RUN apt-get update
