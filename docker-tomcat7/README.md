@@ -14,9 +14,12 @@ All the docker files to deploy [Apache Tomcat 7](http://tomcat.apache.org/downlo
 #
 # Optionally add a startup script at deployment/init.sh and it will be run inside the 
 #     container before tomcat comes up
-$docker run -i -t -p 8080:8080 -e JAVA_OPTS='-Dsome.property=value' 
+#
+$docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e JAVA_OPTS='-Dsome.property=value' 
     -e Xmx=2048m -v deployment:/deployment maluuba/tomcat7
 ```
+Note: Add sys trace capacity to get arround the tomcat init.d script bug. See [Docker issue 6800](https://github.com/docker/docker/issues/6800) for details.
+
 Then point your browser at [http://localhost:8080/](http://localhost:8080/)
 
 or [http://192.168.59.103:8080/](http://192.168.59.103:8080/) if you are using boot2docker
