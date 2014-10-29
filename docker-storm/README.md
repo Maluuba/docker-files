@@ -42,6 +42,7 @@ To rebuild the **maluuba/storm** image just run :
 Run the following commands to deploy/destroy your cluster.
 
   - ```make deploy-cluster```
+  - ```make deploy-cluster HOST_MOUNT=/home/ec2-user/deployment```
   - ```make destroy-cluster```
 
 
@@ -51,7 +52,7 @@ Without storm installed on your machine:
 
 ```
 docker run --rm --entrypoint storm  \  
-       -v <HOST_TOPOLOGY_TARGET_DIR>:/home/storm maluuba/storm \   
+       -v <HOST_TOPOLOGY_TARGET_DIR>:/deployment maluuba/storm \   
        -c nimbus.host=`docker inspect --format='{{.NetworkSettings.IPAddress}}' storm-nimbus` jar <TOPOLOGY_JAR> <TOPOLOGY_CLASS> <TOPOLOGY_ARGS>
 ```
 

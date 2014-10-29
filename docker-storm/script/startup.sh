@@ -9,11 +9,11 @@ fi
 
 daemons=(nimbus, drpc, supervisor, ui, logviewer)
 
-if [ -f /home/storm/init.sh ];
+if [ -f /deployment/init.sh ];
 then
     echo "Running custom init script"
-    chmod +x /home/storm/init.sh
-    /home/storm/init.sh
+    chmod +x /deployment/init.sh
+    /deployment/init.sh
 fi
 
 # Create supervisor configurations for Storm daemons
