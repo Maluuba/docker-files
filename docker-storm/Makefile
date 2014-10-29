@@ -3,7 +3,7 @@
 #
 # Authors: Florian Hussonnois <florian.hussonnois_gmail.com>, Maluuba Infrastructure Team <infrastructure@maluuba.com>
 #
-STORM_IMAGE=maluuba/docker-storm
+STORM_IMAGE=maluuba/storm
 
 all:
 

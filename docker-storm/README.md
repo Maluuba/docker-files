@@ -1,14 +1,14 @@
-docker-storm
+storm
 =============
 A Dockerfile for deploying a [Storm](http://storm.incubator.apache.org/) cluster under [supervision](http://supervisord.org/) using [Docker](https://www.docker.io/)
  containers. 
 
-The image is registered to the [Docker Index](https://index.docker.io/u/maluuba/docker-storm/)
+The image is registered to the [Docker Index](https://index.docker.io/u/maluuba/storm/)
 
 Installation
 ------------
 1. Install [Docker](https://www.docker.io/)
-2. Pull the Docker image : ```docker pull maluuba/docker-storm```
+2. Pull the Docker image : ```docker pull maluuba/storm```
 
 Usage
 -----
@@ -19,7 +19,7 @@ docker run -p 2181:2181 -p 2888:2888 -p 3888:3888 -h zookeeper –-name="zookeep
 
 The image contains an **ENTRYPOINT** for running one container per storm daemon as follow:
   
-```docker run [OPTIONS] --link zookeeper:zk -d maluuba/docker-storm --daemon (nimbus, drpc, supevisor, ui, logviewer)```  
+```docker run [OPTIONS] --link zookeeper:zk -d maluuba/storm --daemon (nimbus, drpc, supevisor, ui, logviewer)```  
 
 For instance to run Nimbus :
 
@@ -28,14 +28,14 @@ docker run \
       --name="storm-nimbus" -h nimbus \  
       --expose 6627 --expose 3772 --expose 3773 \  
       --link zookeeper:zk \  
-      -d maluuba/docker-storm \  
+      -d maluuba/storm \  
       --daemon nimbus
 ```
 Makefiles
 ---------
 You can use the `Makefile` for directly building and deploying storm.
 
-To rebuild the **maluuba/docker-storm** image just run :
+To rebuild the **maluuba/storm** image just run :
 
   - ```make storm-build```
 
@@ -51,7 +51,7 @@ Without storm installed on your machine:
 
 ```
 docker run --rm --entrypoint storm  \  
-       -v <HOST_TOPOLOGY_TARGET_DIR>:/home/storm maluuba/docker-storm \   
+       -v <HOST_TOPOLOGY_TARGET_DIR>:/home/storm maluuba/storm \   
        -c nimbus.host=`docker inspect --format='{{.NetworkSettings.IPAddress}}' storm-nimbus` jar <TOPOLOGY_JAR> <TOPOLOGY_CLASS> <TOPOLOGY_ARGS>
 ```
 
