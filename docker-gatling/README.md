@@ -5,7 +5,9 @@ All the docker files to deploy [Gatling](http://gatling.io/) in a docker contain
 
 ### Usage
 
-    docker run -v <conf>:/opt/gatling/conf -v results;/opt/gatling/results user-files:/opt/gatling/user-files -it maluuba/gatling
+    docker run -v <conf>:/opt/gatling/conf \
+               -v <results>:/opt/gatling/results \
+               -v <user-files>:/opt/gatling/user-files -it maluuba/gatling
 
 ## Building
 
