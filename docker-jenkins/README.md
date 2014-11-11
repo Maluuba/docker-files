@@ -4,15 +4,19 @@ Sets up a container with jenkins installed listening on port 8080.
 
 ## Usage
 
+See [The Maluuba Jenkins Wiki page][1] for details.
+
 To run the container, do the following:
 
-    docker run -d -P maluuba/jenkins
+    docker run --detach=true --publish-all=true --name="maluuba-jenkins" --volume /var/jenkins:/jenkins maluuba/jenkins
     
     docker ps
     CONTAINER ID        IMAGE                       COMMAND                CREATED             STATUS              PORTS                     NAMES
     1131d37c38b1        maluuba/jenkins:latest    java -jar /opt/jenki   12 seconds ago      Up 12 seconds       0.0.0.0:49153->8080/tcp   drunk_fermi
 
 Your jenkins instance is now available by going to http://localhost:49153 .
+
+[1]: http://wiki.maluuba.com/w/index.php?title=Jenkins
 
 ### Persistent Configuration
 
