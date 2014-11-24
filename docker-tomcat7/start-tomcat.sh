@@ -27,6 +27,7 @@ then
 	echo "JAVA_OPTS=\"\${JAVA_OPTS} ${JAVA_OPTS} \"" >> /etc/default/tomcat7
 fi
 
+chown /deployment tomcat7:tomcat7
 service tomcat7 restart
 
 #Override the exit command to prevent accidental container distruction 
