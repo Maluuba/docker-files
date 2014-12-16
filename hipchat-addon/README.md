@@ -31,7 +31,26 @@ Will run the default sample project which echos ```Hi, [Your Name]``` when you t
 Add any custom nodejs source files and mount them into the container at /src/addon to get custom code to run in the container.
 
     $docker run -it --name hipchat_addon -v /src/addon:/src/addon maluuba/hipchat-addon
+        * Stopping NTP server ntpd                                              [ OK ]
+        * Starting NTP server ntpd                                              [ OK ]
+        * Restarting daemon monitor monit                                       [ OK ]
 
+        Tunnel established at https://xxxxxxxx.ngrok.com
+
+        Stopping redis-server: redis-server.
+        Starting redis-server: redis-server.
+        Copying custom code
+
+        > maluuba-addon-key@0.1.0 web-dev /etc/hipchat/addon
+        > nodemon --harmony -e js,json,css,hbs web.js
+
+        16 Dec 20:01:18 - [nodemon] v1.2.1
+        16 Dec 20:01:18 - [nodemon] to restart at any time, enter `rs`
+        16 Dec 20:01:18 - [nodemon] watching: *.*
+        16 Dec 20:01:18 - [nodemon] starting `node --harmony web.js`
+        info: Atlassian Connect add-on started at https://xxxxxxxx.ngrok.com
+        
+        
 #### Integration
 
 1.    Log in to hipchat.com.
