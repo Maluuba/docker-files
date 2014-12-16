@@ -5,7 +5,7 @@ A docker container which runs hipcaht addon service as detailed in the [Quick St
 
 ## Usage
 
-##### Basic usage
+##### Basic Usage
 Will run the default sample project which echos ```Hi, [Your Name]``` when you type /hello
 
     $docker run -it --name hipchat_addon -v maluuba/hipchat-addon
@@ -27,6 +27,8 @@ Will run the default sample project which echos ```Hi, [Your Name]``` when you t
         16 Dec 20:01:18 - [nodemon] starting `node --harmony web.js`
         info: Atlassian Connect add-on started at https://xxxxxxxx.ngrok.com
 
+##### Custom Source Files
+$docker run -it --name hipchat_addon -v maluuba/hipchat-addon
 #### Integration
 
 1.    Log in to hipchat.com.
