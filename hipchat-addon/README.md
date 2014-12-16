@@ -12,7 +12,7 @@ $docker run -it --name hipchat_addon -v maluuba/hipchat-addon
  * Starting NTP server ntpd                                              [ OK ]
  * Restarting daemon monitor monit                                       [ OK ]
 
-Tunnel established at https://5a3f56c.ngrok.com
+Tunnel established at https://XXXXXX.ngrok.com
 
 Stopping redis-server: redis-server.
 Starting redis-server: redis-server.
@@ -24,9 +24,21 @@ Starting redis-server: redis-server.
 16 Dec 20:01:18 - [nodemon] to restart at any time, enter `rs`
 16 Dec 20:01:18 - [nodemon] watching: *.*
 16 Dec 20:01:18 - [nodemon] starting `node --harmony web.js`
-info: Atlassian Connect add-on started at https://5a3f56c.ngrok.com
-
+info: Atlassian Connect add-on started at https://XXXXXX.ngrok.com
 ```
+### Integration
+
+1.    Log in to hipchat.com.
+2.    Click the Rooms tab.
+3.    Click the My Rooms tab.
+4.    Click the link to the room in which you want to install the add-on.
+5.    Click the Integrations link.
+6.    Click the Build and install your own integration link.
+7.    In the Integration URL field, enter the secure tunnel's URL and append "/addon/capabilities" to the URL. For example:
+8.    https://xxxxxxxx.ngrok.com/addon/capabilities
+9.    Click Add integration.
+
+
 ## Building
 
 To build the image, simply invoke
