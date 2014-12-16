@@ -3,7 +3,7 @@ Docker Hipchat Addon Service
 
 A docker container which runs hipcaht addon service as detailed in the [Quick Start Tutorial](https://www.hipchat.com/docs/apiv2/quick_start). 
 
-### Usage
+## Usage
 
 ```
 # Basic usage
@@ -26,7 +26,7 @@ Starting redis-server: redis-server.
 16 Dec 20:01:18 - [nodemon] starting `node --harmony web.js`
 info: Atlassian Connect add-on started at https://XXXXXX.ngrok.com
 ```
-### Integration
+#### Integration
 
 1.    Log in to hipchat.com.
 2.    Click the Rooms tab.
@@ -37,6 +37,14 @@ info: Atlassian Connect add-on started at https://XXXXXX.ngrok.com
 7.    In the Integration URL field, enter the secure tunnel's URL and append "/addon/capabilities" to the URL. For example:
 8.    https://xxxxxxxx.ngrok.com/addon/capabilities
 9.    Click Add integration.
+
+#### Test Your addon
+
+
+1.    Click the Summary link.
+2.    Click Open in web app.
+3.    Type /hello in the chat field.
+4.    The message, "Hi, " appears in the chat.
 
 
 ## Building
