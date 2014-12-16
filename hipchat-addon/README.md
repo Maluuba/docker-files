@@ -1,14 +1,14 @@
 Docker Hipchat Addon Service
 ===========
 
-A docker container which runs hipcaht addon service as detailed in the [Quick Start Tutorial](https://www.hipchat.com/docs/apiv2/quick_start). 
+A docker container which runs hipcaht addon service as detailed in the [Quick Start Tutorial](https://www.hipchat.com/docs/apiv2/quick_start). This installs all tools required inside the container including redis and nodejs.
 
 ## Usage
 
 ##### Basic Usage
 Will run the default sample project which echos ```Hi, [Your Name]``` when you type /hello
 
-    $docker run -it --name hipchat_addon -v maluuba/hipchat-addon
+    $docker run -it --name hipchat_addon maluuba/hipchat-addon
         * Stopping NTP server ntpd                                              [ OK ]
         * Starting NTP server ntpd                                              [ OK ]
         * Restarting daemon monitor monit                                       [ OK ]
@@ -28,7 +28,10 @@ Will run the default sample project which echos ```Hi, [Your Name]``` when you t
         info: Atlassian Connect add-on started at https://xxxxxxxx.ngrok.com
 
 ##### Custom Source Files
-$docker run -it --name hipchat_addon -v maluuba/hipchat-addon
+Add any custom nodejs source files and mount them into the container at /src/addon to get custom code to run in the container.
+
+    $docker run -it --name hipchat_addon -v /src/addon:/src/addon maluuba/hipchat-addon
+
 #### Integration
 
 1.    Log in to hipchat.com.
