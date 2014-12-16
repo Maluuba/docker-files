@@ -1,0 +1,22 @@
+#!/bin/sh
+# Contains credentials
+# This is a template file, save as simply .config.sh (amd make executable) and set your own values below.
+
+# Define the website hostname and e-mail for the VirtualHost
+websiteurl= # this would be our public EC2 instance host: i.e. ec2-blah.compute-1.amazonaws.com
+emailcontact=infrastructure@maluuba.com
+# Continuous update endpoint
+# updateurl=
+
+# Define the username for Nominatim to install/run under, so that it can run independent of any individual personal account on the machine
+username=nominatim
+password=
+
+## Full Planet
+# On a machine with 1.2TB disk, 32 GB RAM, Quad processors - it took 10 days to run and used about 700GB. (December 2013)
+postgresconfigmode=dw
+#override_maintenance_work_mem=16GB
+
+# Mounted postgresql cluster drives require the UID/GID permissions of the original postgres username
+originaluid= # i.e. 107
+originalgid= # i.e. 114
