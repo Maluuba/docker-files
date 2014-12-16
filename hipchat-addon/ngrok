@@ -1,0 +1,10 @@
+set httpd port 5150 and
+    use address localhost
+    allow localhost
+
+set daemon 30
+#with start delay 5
+
+check process ngrok matching "/usr/local/bin/ngrok"
+    start program = "/bin/bash -c '2>&1 1>>/var/log/ngrok.log /usr/local/bin/ngrok -log=stdout 3000'"
+    stop program = "/usr/bin/killall ngrok"

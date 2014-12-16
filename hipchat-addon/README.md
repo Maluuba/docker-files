@@ -1,0 +1,1 @@
+== Maluuba Hipchat Hello World Addon ==
