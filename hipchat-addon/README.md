@@ -5,14 +5,15 @@ A docker container which runs hipcaht addon service as detailed in the [Quick St
 
 ## Usage
 
+##### Basic usage
 ```
-# Basic usage
+
 $docker run -it --name hipchat_addon -v maluuba/hipchat-addon
  * Stopping NTP server ntpd                                              [ OK ]
  * Starting NTP server ntpd                                              [ OK ]
  * Restarting daemon monitor monit                                       [ OK ]
 
-Tunnel established at https://XXXXXX.ngrok.com
+Tunnel established at https://xxxxxxxx.ngrok.com
 
 Stopping redis-server: redis-server.
 Starting redis-server: redis-server.
@@ -24,7 +25,7 @@ Starting redis-server: redis-server.
 16 Dec 20:01:18 - [nodemon] to restart at any time, enter `rs`
 16 Dec 20:01:18 - [nodemon] watching: *.*
 16 Dec 20:01:18 - [nodemon] starting `node --harmony web.js`
-info: Atlassian Connect add-on started at https://XXXXXX.ngrok.com
+info: Atlassian Connect add-on started at https://xxxxxxxx.ngrok.com
 ```
 #### Integration
 
