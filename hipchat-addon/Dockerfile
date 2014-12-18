@@ -13,7 +13,7 @@ RUN git clone https://github.com/joyent/node.git /usr/src/node/
 RUN cd /usr/src/node && git checkout v$NODE_VERSION && ./configure && make && make install
 RUN apt-get install -y npm
 RUN npm install -g nodemon
-RUN npm install -g jquery
+RUN npm install -g request
 RUN rm -rf /usr/src/node
 
 # Install ngrok
