@@ -1,7 +1,7 @@
 Docker Hipchat Addon Service
 ===========
 
-A docker container which runs hipcaht addon service as detailed in the [Quick Start Tutorial](https://www.hipchat.com/docs/apiv2/quick_start). This installs all tools required inside the container including redis and nodejs.
+A docker container which runs HipChat addon service as detailed in the [Quick Start Tutorial](https://www.hipchat.com/docs/apiv2/quick_start). This installs all tools required inside the container including redis and nodejs.
 
 ## Usage
 
