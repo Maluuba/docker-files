@@ -14,7 +14,6 @@ RUN cd /usr/src/node && git checkout v$NODE_VERSION && ./configure && make && ma
 RUN apt-get install -y npm
 RUN npm install -g nodemon
 RUN npm install -g request
-RUN npm install -g sleep
 RUN rm -rf /usr/src/node
 
 # Install ngrok
