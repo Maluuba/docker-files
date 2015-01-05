@@ -14,10 +14,6 @@ RUN chmod +x /opt/start-jenkins.sh
 RUN chmod 644 /opt/jenkins.war
 ENV JENKINS_HOME /jenkins
 
-RUN useradd JENKINS -U -s /bin/false
-
-USER JENKINS 
-
 EXPOSE 8080
 
 CMD ["/opt/start-jenkins.sh"]
