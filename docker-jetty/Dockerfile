@@ -22,7 +22,7 @@ RUN rm -rf /opt/jetty/webapps.demo
 RUN useradd jetty -U -s /bin/false
 RUN chown -R jetty:jetty /opt/jetty
 
-USER jetty
+
 
 
 # Run Jetty
