@@ -19,8 +19,6 @@ chown -R postgres:postgres /etc/postgresql/9.3
 
 # Tuning PostgreSQL
 /app/configPostgresql.sh ${postgresconfigmode} n ${override_maintenance_work_mem}
-# recreate the postgres functions to use the nominatim of the docker
-sudo -u postgres -- /app/nominatim/utils/setup.php --create-functions --enable-diff-updates
 # Restart postgres assume the new config
 service postgresql restart
 
@@ -85,7 +83,8 @@ service apache2 restart
 
 # Adust PostgreSQL to do disk writes
 /app/configPostgresqlDiskWrites.sh
-
+# recreate the postgres functions to use the nominatim of the docker
+sudo -u postgres -- /app/nominatim/utils/setup.php --create-functions --enable-diff-updates
 # Reload postgres assume the new config
 service postgresql restart
 
