@@ -19,4 +19,5 @@ else
 fi
 
 #Override the exit command to prevent accidental container distruction 
-java -jar /opt/jenkins.war
+java -jar /opt/jenkins.war & 
+bash
