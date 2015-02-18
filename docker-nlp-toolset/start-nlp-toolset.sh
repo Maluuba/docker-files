@@ -1,6 +1,7 @@
 #!/bin/sh
 
-INIT_SCRIPT_PATH=/nlp-toolset/init.sh
+NLP_TOOLSET_DIR=/NlpToolset
+INIT_SCRIPT_PATH=$NLP_TOOLSET_DIR/init.sh
 
 if [ -f $INIT_SCRIPT_PATH ];
 then
@@ -8,15 +9,10 @@ then
 	chmod +x $INIT_SCRIPT_PATH
 	$INIT_SCRIPT_PATH
 else
-        echo "No init script found at $INIT_SCRIPT_PATH, you can see an example of the recommended script at https://github.com/Maluuba/deployment/blob/master$INIT_SCRIPT_PATH"
+	echo "No init script found at $INIT_SCRIPT_PATH, you can see an example of the recommended script at https://github.com/Maluuba/NlpToolset/blob/master/init.sh"
 fi
 
-NLP_TOOLSET_DIR=/NlpToolset
-
 cd $NLP_TOOLSET_DIR
-
-# TODO set password in $NLP_TOOLSET_DIR/config/environments/production.rb
-
 
 bundle install
 
