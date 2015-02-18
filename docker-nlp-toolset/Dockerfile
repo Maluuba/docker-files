@@ -1,10 +1,9 @@
 FROM maluuba/tomcat7
 MAINTAINER Maluuba NLP Team <nlp@maluuba.com>
 
-RUN apt-get update && apt-get clean
 RUN apt-get install -qqy git docker.io
 
-RUN apt-get install maven
+RUN apt-get -qq install maven
 
 RUN mvn -X
 
