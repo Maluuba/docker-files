@@ -1,4 +1,4 @@
-FROM maluuba:tomcat7
+FROM maluuba/tomcat7
 MAINTAINER Maluuba NLP Team <nlp@maluuba.com>
 
 RUN apt-get update && apt-get clean
