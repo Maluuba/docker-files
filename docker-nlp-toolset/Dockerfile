@@ -22,7 +22,7 @@ RUN bash -l -c "rvm requirements"
 RUN bash -l -c "rvm install jruby-1.7.10"
 RUN echo 'gem: --no-rdoc --no-ri' >> ~/.gemrc
 RUN bash -l -c "source /etc/profile.d/rvm.sh"
-#RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc" #t
+RUN bash -l -c "gem install bundler --no-ri --no-rdoc"
 RUN bash -l -c "type rvm | head -n 1 | grep 'rvm is a function'"
 RUN bash -l -c "rvm list known"
 RUN bash -l -c "rvm list"
@@ -38,6 +38,6 @@ VOLUME /var/lib/docker
 ADD start-nlp-toolset.sh /opt/start-nlp-toolset.sh
 RUN chmod +x /opt/start-nlp-toolset.sh
 
-EXPOSE 3000
+EXPOSE 8080
 
-ENTRYPOINT ["/opt/start-nlp-toolset.sh"]
+ENTRYPOINT ["bash", "-c", "/opt/start-nlp-toolset.sh"]

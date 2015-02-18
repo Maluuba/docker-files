@@ -1,5 +1,8 @@
 #!/bin/sh
 
+set -e
+set -x
+
 NLP_TOOLSET_DIR=/NlpToolset
 INIT_SCRIPT_PATH=$NLP_TOOLSET_DIR/init.sh
 
@@ -14,21 +17,17 @@ fi
 
 cd $NLP_TOOLSET_DIR
 
-bundle install
+cp script/nlptoolset.conf /etc/init/nlptoolset.conf
 
-# Production mode
-RUN [RAILS_ENV=production] rake db:migrate
+bash -l -c "bundle install"
 
-mvn package
-cp $NLP_TOOLSET_DIR/target/NlpToolset.war /var/lib/tomcat7/webapps/nlptoolset/ROOT.war
+bash -l -c "rvm use jruby-1.7.10@nlp-toolset"
+bash -l -c "RAILS_ENV=production rake db:migrate"
+
+bash -l -c "mvn package"
+cp $NLP_TOOLSET_DIR/target/NlpToolset.war /var/lib/tomcat7/webapps/ROOT.war
 service tomcat7 restart
 
 start nlptoolset
 
-rvm use jruby@nlp-toolset
-
-rake jobs:work
-
-rails s
-
-curl localhost:3000 > /dev/null
+bash

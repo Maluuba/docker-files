@@ -10,13 +10,21 @@ Set the password in NlpToolset/config/environments/production.rb
 Optionally add a startup script at NlpToolset/init.sh and it will be run inside the container before tomcat comes up.
 
 ```
-docker run --cap-add SYS_PTRACE -it -p 3000:3000 -e Xmx=3g -v ~/workspace/NlpToolset:/NlpToolset maluuba/nlp-toolset
+docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e Xmx=3g -v ~/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
 ```
 
 Or with Boot2Docker on Windows:
+
 ```
-docker run --cap-add SYS_PTRACE -it -p 3000:3000 -e Xmx=3g -v /c/Users/Justin/Documents/workspace/NlpToolset:/NlpToolset maluuba/nlp-toolset
+docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e Xmx=3g -v /c/Users/username/Documents/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
 ```
+
+For example:
+
+```
+docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e Xmx=3g -v /c/Users/justin/Documents/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
+```
+
 Note: Add sys trace capacity to get around the tomcat init.d script bug. See [Docker issue 6800](https://github.com/docker/docker/issues/6800) for details.
 
 Then point your browser at [http://localhost:3000/](http://localhost:3000/) or [http://192.168.59.103:3000/](http://192.168.59.103:3000/) if you are using boot2docker.
