@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 set -x
@@ -15,18 +15,23 @@ else
 	echo "No init script found at $INIT_SCRIPT_PATH, you can see an example of the recommended script at https://github.com/Maluuba/NlpToolset/blob/master/init.sh"
 fi
 
+source /etc/profile.d/rvm.sh
+
 cd $NLP_TOOLSET_DIR
 
 cp script/nlptoolset.conf /etc/init/nlptoolset.conf
 
-bash -l -c "bundle install"
+bundle install
 
-bash -l -c "rvm use jruby-1.7.10@nlp-toolset"
-bash -l -c "rake db:migrate"
+rvm use jruby-1.7.10@nlp-toolset
+rake db:migrate
+
 chown -R tomcat7:tomcat7 /usr/share/tomcat7/nlptoolset/db
 
+export HOME=/usr/share/tomcat7
+
 if [ "${RAILS_ENV}" == 'production' ]; then
-	bash -l -c "mvn package -Dnlp.toolset.rails.env=$RAILS_ENV"
+	mvn package -Dnlp.toolset.rails.env=$RAILS_ENV
 	service tomcat7 stop
 	rm -rf /var/lib/tomcat7/webapps/ROOT*
 	cp $NLP_TOOLSET_DIR/target/NlpToolset.war /var/lib/tomcat7/webapps/ROOT.war
@@ -34,9 +39,14 @@ if [ "${RAILS_ENV}" == 'production' ]; then
 
 	start nlptoolset
 else
-	bash -l -c "rails server --port=8080&"
+	
+	cp -R $HOME/.ssh/ /root/
+
+	chmod 600 /root/.ssh/id_rsa
+
+	rails server --port=8080&
 	sleep 20
-	bash -l -c "rake jobs:work&"
+	rake jobs:work&
 fi
 
 sleep 10
