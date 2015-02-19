@@ -22,17 +22,22 @@ cp script/nlptoolset.conf /etc/init/nlptoolset.conf
 bash -l -c "bundle install"
 
 bash -l -c "rvm use jruby-1.7.10@nlp-toolset"
-bash -l -c "RAILS_ENV=production rake db:migrate"
+bash -l -c "rake db:migrate"
 chown -R tomcat7:tomcat7 /usr/share/tomcat7/nlptoolset/db
 
-bash -l -c "mvn package"
-service tomcat7 stop
-rm -rf /var/lib/tomcat7/webapps/ROOT*
-cp $NLP_TOOLSET_DIR/target/NlpToolset.war /var/lib/tomcat7/webapps/ROOT.war
-service tomcat7 restart
+if [[ $RAILS_ENV == 'production' ]]; then
+	bash -l -c "mvn package -Dnlp.toolset.rails.env=$RAILS_ENV"
+	service tomcat7 stop
+	rm -rf /var/lib/tomcat7/webapps/ROOT*
+	cp $NLP_TOOLSET_DIR/target/NlpToolset.war /var/lib/tomcat7/webapps/ROOT.war
+	service tomcat7 restart
+
+	start nlptoolset
+else
+	bash -l -c "rails server --port=8080&"
+	bash -l -c "rake jobs:work&"
+fi
 
 curl localhost:8080
-
-start nlptoolset
 
 bash

@@ -1,7 +1,6 @@
 FROM maluuba/tomcat7
 MAINTAINER Maluuba NLP Team <nlp@maluuba.com>
 
-
 RUN apt-get install -qqy git docker.io
 
 # Maven
@@ -37,5 +36,7 @@ ADD start-nlp-toolset.sh /opt/start-nlp-toolset.sh
 RUN chmod +x /opt/start-nlp-toolset.sh
 
 EXPOSE 8080
+
+ENV RAILS_ENV production 
 
 ENTRYPOINT ["bash", "-c", "/opt/start-nlp-toolset.sh"]
