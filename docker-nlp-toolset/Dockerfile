@@ -18,11 +18,11 @@ WORKDIR /tmp/docker_dir
 # Ruby, JRuby, and RVM
 # Default to production, as per the README, this can be overriden in `docker run` by adding "-e RAILS_ENV=development"
 ENV RAILS_ENV production 
-ADD Gemfile Gemfile
-ADD Gemfile.lock Gemfile.lock
-ADD install_rvm.sh install_rvm.sh
-RUN chmod +x install_rvm.sh
-RUN ./install_rvm.sh
+ADD Gemfile /tmp/docker_dir/Gemfile
+ADD Gemfile.lock /tmp/docker_dir/Gemfile.lock
+ADD install_rvm.sh /tmp/docker_dir/install_rvm.sh
+RUN chmod +x /tmp/docker_dir/install_rvm.sh
+RUN /tmp/docker_dir/install_rvm.sh
 
 # Get user folders set up.
 RUN mkdir -p /usr/share/tomcat7/nlptoolset/nlprepos

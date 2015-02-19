@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-set -x
 
 NLP_TOOLSET_DIR=/NlpToolset
 INIT_SCRIPT_PATH=$NLP_TOOLSET_DIR/init.sh
@@ -21,9 +20,10 @@ cd $NLP_TOOLSET_DIR
 
 cp script/nlptoolset.conf /etc/init/nlptoolset.conf
 
+rvm use jruby-1.7.10@nlp-toolset
+
 bundle install
 
-rvm use jruby-1.7.10@nlp-toolset
 rake db:migrate
 
 chown -R tomcat7:tomcat7 /usr/share/tomcat7/nlptoolset/db
@@ -39,9 +39,7 @@ if [ "${RAILS_ENV}" == 'production' ]; then
 
 	start nlptoolset
 else
-	
 	cp -R $HOME/.ssh/ /root/
-
 	chmod 600 /root/.ssh/id_rsa
 
 	rails server --port=8080&
