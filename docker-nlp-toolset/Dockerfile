@@ -34,4 +34,4 @@ EXPOSE 8080
 ADD start-nlp-toolset.sh /opt/start-nlp-toolset.sh
 RUN chmod +x /opt/start-nlp-toolset.sh
 
-ENTRYPOINT ["bash", "-c", "/opt/start-nlp-toolset.sh"]
+CMD ["bash", "-c", "/opt/start-nlp-toolset.sh"]

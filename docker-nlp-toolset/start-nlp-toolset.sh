@@ -28,7 +28,7 @@ rake db:migrate
 
 chown -R tomcat7:tomcat7 /usr/share/tomcat7/nlptoolset/db
 
-export HOME=/usr/share/tomcat7
+TOMCAT7_HOME=/usr/share/tomcat7
 
 if [ "${RAILS_ENV}" == 'production' ]; then
 	mvn package -Dnlp.toolset.rails.env=$RAILS_ENV
@@ -39,7 +39,8 @@ if [ "${RAILS_ENV}" == 'production' ]; then
 
 	start nlptoolset
 else
-	cp -R $HOME/.ssh/ /root/
+	# In development mode, we run as root so we need the SSH keys in root's home.
+	cp -R $TOMCAT7_HOME/.ssh/ /root/
 	chmod 600 /root/.ssh/id_rsa
 
 	rails server --port=8080&
@@ -47,7 +48,5 @@ else
 	rake jobs:work&
 fi
 
-sleep 10
+sleep 20
 curl localhost:8080 || echo "Not up yet"
-
-bash
