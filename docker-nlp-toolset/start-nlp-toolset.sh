@@ -18,6 +18,8 @@ source /etc/profile.d/rvm.sh
 
 cd $NLP_TOOLSET_DIR
 
+rm -rf tmp/pids/server.pid
+
 cp script/nlptoolset.conf /etc/init/nlptoolset.conf
 
 rvm use jruby-1.7.10@nlp-toolset
