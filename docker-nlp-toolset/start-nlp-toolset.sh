@@ -50,3 +50,5 @@ fi
 
 sleep 20
 curl localhost:8080 || echo "Not up yet"
+
+bash
