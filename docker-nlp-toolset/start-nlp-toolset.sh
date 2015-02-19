@@ -25,7 +25,7 @@ bash -l -c "rvm use jruby-1.7.10@nlp-toolset"
 bash -l -c "rake db:migrate"
 chown -R tomcat7:tomcat7 /usr/share/tomcat7/nlptoolset/db
 
-if [[ $RAILS_ENV == 'production' ]]; then
+if [ "${RAILS_ENV}" == 'production' ]; then
 	bash -l -c "mvn package -Dnlp.toolset.rails.env=$RAILS_ENV"
 	service tomcat7 stop
 	rm -rf /var/lib/tomcat7/webapps/ROOT*
@@ -35,9 +35,11 @@ if [[ $RAILS_ENV == 'production' ]]; then
 	start nlptoolset
 else
 	bash -l -c "rails server --port=8080&"
+	sleep 20
 	bash -l -c "rake jobs:work&"
 fi
 
-curl localhost:8080
+sleep 10
+curl localhost:8080 || echo "Not up yet"
 
 bash
