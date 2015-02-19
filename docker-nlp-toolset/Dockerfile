@@ -31,9 +31,7 @@ RUN bash -l -c "rvm use --create jruby-1.7.10@nlp-toolset"
 # Get user folders set up.
 RUN mkdir -p /usr/share/tomcat7/nlptoolset/nlprepos
 RUN mkdir -p /usr/share/tomcat7/nlptoolset/db
-RUN mkdir -p /var/lib/tomcat7/webapps/nlptoolset
-
-VOLUME /var/lib/docker
+RUN chown -R tomcat7:tomcat7 /usr/share/tomcat7/nlptoolset
 
 ADD start-nlp-toolset.sh /opt/start-nlp-toolset.sh
 RUN chmod +x /opt/start-nlp-toolset.sh

@@ -23,10 +23,15 @@ bash -l -c "bundle install"
 
 bash -l -c "rvm use jruby-1.7.10@nlp-toolset"
 bash -l -c "RAILS_ENV=production rake db:migrate"
+chown -R tomcat7:tomcat7 /usr/share/tomcat7/nlptoolset/db
 
 bash -l -c "mvn package"
+service tomcat7 stop
+rm -rf /var/lib/tomcat7/webapps/ROOT*
 cp $NLP_TOOLSET_DIR/target/NlpToolset.war /var/lib/tomcat7/webapps/ROOT.war
 service tomcat7 restart
+
+curl localhost:8080
 
 start nlptoolset
 
