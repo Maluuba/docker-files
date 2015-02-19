@@ -1,0 +1,64 @@
+source 'https://rubygems.org'
+
+gem 'rails', '3.2.8'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+# For authentication
+gem 'omniauth-github'
+gem 'omniauth-openid'
+
+gem 'activerecord-jdbcsqlite3-adapter', '~> 1.3.0'
+
+#this is causing a ton of already initialized constant warnings
+#gem 'jruby-openssl'
+
+# To use Strong Parameters from rails 4
+gem 'strong_parameters'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'handlebars_assets'
+  gem 'sass-rails',   '~> 3.2.3'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyrhino'
+
+  gem 'uglifier', '>= 1.0.3'
+end
+
+gem 'jquery-rails'
+
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+# To use Jbuilder templates for JSON
+# gem 'jbuilder'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'debugger'
+
+# Use HAML for templating
+gem "haml", '3.1.4'
+
+# Use Warbler for WAR packaging
+gem "warbler"
+gem "zip"
+
+# Used for scheduling heavy background jobs (training,collisions, etc)
+gem 'delayed_job_active_record', '4.0.0'
+# gem 'delayed_job_mongoid'
+gem "daemons"
+# gem "whenever", :require => false
+
+#for parsing config files (.cfg), compatiable with python
+gem "configparser"

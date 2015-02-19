@@ -25,6 +25,18 @@ For example:
 docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v /c/Users/justin/Documents/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
 ```
 
+When doing local tests for changes to the NlpToolset, to run Rails in development mode and re-use your existing git keys and workspace, you can map folders as such:
+
+```
+docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -e RAILS_ENV=development -v /path/to/workspace/NlpToolset:/NlpToolset -v /path/to/.m2:/usr/share/tomcat7/.m2 -v /path/to/.ssh:/usr/share/tomcat7/.ssh -v /path/to/workspace:/NlpToolset/nlprepos/justin@maluuba.com/Maluuba --name=nlp-toolset maluuba/nlp-toolset
+```
+
+For example:
+
+```
+docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -e RAILS_ENV=development -v /c/Users/justin/Documents/workspace/NlpToolset:/NlpToolset -v /c/Users/justin/.m2:/usr/share/tomcat7/.m2 -v /c/Users/justin/.ssh:/usr/share/tomcat7/.ssh -v /c/Users/justin/Documents/workspace:/NlpToolset/nlprepos/justin@maluuba.com/Maluuba --name=nlp-toolset maluuba/nlp-toolset
+```
+
 Note: Add sys trace capacity to get around the tomcat init.d script bug. See [Docker issue 6800](https://github.com/docker/docker/issues/6800) for details.
 
 Then point your browser at [http://localhost:3000/](http://localhost:3000/) or [http://192.168.59.103:3000/](http://192.168.59.103:3000/) if you are using boot2docker.

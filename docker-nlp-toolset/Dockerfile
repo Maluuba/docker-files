@@ -26,6 +26,9 @@ RUN bash -l -c "type rvm | head -n 1 | grep 'rvm is a function'"
 RUN bash -l -c "rvm list known"
 RUN bash -l -c "rvm list"
 RUN bash -l -c "rvm use --create jruby-1.7.10@nlp-toolset"
+ADD Gemfile Gemfile
+ADD Gemfile.lock Gemfile.lock
+RUN bash -l -c "bundle install"
 
 # Get user folders set up.
 RUN mkdir -p /usr/share/tomcat7/nlptoolset/nlprepos
