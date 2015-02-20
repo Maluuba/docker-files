@@ -27,6 +27,27 @@ ADD install_rvm.sh /tmp/docker_dir/install_rvm.sh
 RUN chmod +x /tmp/docker_dir/install_rvm.sh
 RUN /tmp/docker_dir/install_rvm.sh
 
+# Training libraries
+# LIBSVM
+ENV LIBSVM_PATH=/tmp/LIBSVM
+RUN mkdir -p $LIBSVM_PATH \
+    && curl http://www.csie.ntu.edu.tw/~cjlin/cgi-bin/libsvm.cgi?+http://www.csie.ntu.edu.tw/~cjlin/libsvm+tar.gz \
+    | tar -xJC $LIBSVM_PATH \
+    && cd $LIBSVM_PATH/libsvm-* \
+    && make
+    && cp svm-train /usr/local/bin/
+    && cp svm-predict /usr/local/bin/
+
+# CRFPP
+ENV CRFPP_PATH=/tmp/CRFPP
+RUN mkdir -p $CRFPP_PATH \
+    && curl https://crfpp.googlecode.com/files/CRF%2B%2B-0.58.tar.gz \
+    | tar -xJC $CRFPP_PATH \
+    && cd $CRFPP_PATH/CRF* \
+    && ./configure \
+    && make \
+    && make install
+
 # Get user folders set up.
 RUN mkdir -p /usr/share/tomcat7/nlptoolset/nlprepos
 RUN mkdir -p /usr/share/tomcat7/nlptoolset/db

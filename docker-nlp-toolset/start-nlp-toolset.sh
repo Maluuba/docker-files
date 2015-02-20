@@ -11,7 +11,7 @@ then
 	chmod +x $INIT_SCRIPT_PATH
 	$INIT_SCRIPT_PATH
 else
-	echo "No init script found at $INIT_SCRIPT_PATH, you can see an example of the recommended script at https://github.com/Maluuba/NlpToolset/blob/master/init.sh"
+	echo "No init script found at $INIT_SCRIPT_PATH"
 fi
 
 source /etc/profile.d/rvm.sh

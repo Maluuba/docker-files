@@ -5,9 +5,9 @@ All the docker files to deploy the NLP Toolset.
 
 ### Usage
 
-Set the password in NlpToolset/config/environments/production.rb
+Get the NlpToolset (https://github.com/Maluuba/NlpToolset) repository.
 
-Optionally add a startup script at NlpToolset/init.sh and it will be run inside the container before tomcat comes up.
+Set the password in NlpToolset/config/environments/production.rb
 
 ```
 docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v ~/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
