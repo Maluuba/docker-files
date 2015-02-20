@@ -46,6 +46,7 @@ if [ "${RAILS_ENV}" == 'production' ]; then
 
 	start nlptoolset
 else
+	mkdir -p /root/.ssh/
 	# Get default known_hosts.
 	cp --recursive --force $TOMCAT7_HOME/.ssh/known_hosts /root/.ssh/known_hosts
 
