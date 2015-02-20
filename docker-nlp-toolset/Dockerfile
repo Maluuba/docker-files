@@ -3,6 +3,7 @@ MAINTAINER Maluuba NLP Team <nlp@maluuba.com>
 
 # Git
 RUN apt-get install -qqy git
+RUN apt-get install -qqy openjdk-7-jdk
 
 # Maven
 RUN apt-get remove maven2
