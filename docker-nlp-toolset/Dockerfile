@@ -19,6 +19,8 @@ WORKDIR /tmp/docker_dir
 # Default to production, as per the README, this can be overriden in `docker run` by adding "-e RAILS_ENV=development"
 ENV RAILS_ENV production 
 ADD Gemfile /tmp/docker_dir/Gemfile
+# Use default known_hosts for production.
+ADD known_hosts /usr/share/tomcat7/.ssh/known_hosts
 ADD Gemfile.lock /tmp/docker_dir/Gemfile.lock
 ADD install_rvm.sh /tmp/docker_dir/install_rvm.sh
 RUN chmod +x /tmp/docker_dir/install_rvm.sh

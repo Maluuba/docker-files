@@ -28,11 +28,16 @@ bundle install
 
 rake db:migrate
 
-chown -R tomcat7:tomcat7 /usr/share/tomcat7/nlptoolset/db
-
 TOMCAT7_HOME=/usr/share/tomcat7
 
+chown -R tomcat7:tomcat7 $TOMCAT7_HOME/nlptoolset/db
+
 if [ "${RAILS_ENV}" == 'production' ]; then
+	cp --recursive --force /tmp/ssh_mounted_keys/* $TOMCAT7_HOME/.ssh/
+	chown tomcat7:tomcat7 $TOMCAT7_HOME/.ssh/id_rsa
+	chmod 600 $TOMCAT7_HOME/.ssh/id_rsa
+	chown tomcat7:tomcat7 $TOMCAT7_HOME/.ssh/known_hosts
+
 	mvn package -Dnlp.toolset.rails.env=$RAILS_ENV
 	service tomcat7 stop
 	rm -rf /var/lib/tomcat7/webapps/ROOT*
@@ -41,8 +46,11 @@ if [ "${RAILS_ENV}" == 'production' ]; then
 
 	start nlptoolset
 else
+	# Get default known_hosts.
+	cp --recursive --force $TOMCAT7_HOME/.ssh/known_hosts /root/.ssh/known_hosts
+
 	# In development mode, we run as root so we need the SSH keys in root's home.
-	cp -R $TOMCAT7_HOME/.ssh/ /root/
+	cp --recursive --force /tmp/ssh_mounted_keys/* /root/.ssh/
 	chmod 600 /root/.ssh/id_rsa
 
 	rails server --port=8080&
