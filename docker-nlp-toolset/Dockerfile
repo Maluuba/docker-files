@@ -31,8 +31,8 @@ RUN /tmp/docker_dir/install_rvm.sh
 # LIBSVM
 ENV LIBSVM_PATH=/tmp/LIBSVM
 RUN mkdir -p $LIBSVM_PATH \
-    && curl http://www.csie.ntu.edu.tw/~cjlin/cgi-bin/libsvm.cgi?+http://www.csie.ntu.edu.tw/~cjlin/libsvm+tar.gz \
-    | tar -xJC $LIBSVM_PATH \
+    && curl http://www.csie.ntu.edu.tw/~cjlin/libsvm/libsvm-3.20.tar.gz \
+    | tar xvz --directory $LIBSVM_PATH \
     && cd $LIBSVM_PATH/libsvm-* \
     && make
     && cp svm-train /usr/local/bin/
@@ -42,7 +42,7 @@ RUN mkdir -p $LIBSVM_PATH \
 ENV CRFPP_PATH=/tmp/CRFPP
 RUN mkdir -p $CRFPP_PATH \
     && curl https://crfpp.googlecode.com/files/CRF%2B%2B-0.58.tar.gz \
-    | tar -xJC $CRFPP_PATH \
+    | tar xvz --directory $CRFPP_PATH \
     && cd $CRFPP_PATH/CRF* \
     && ./configure \
     && make \
