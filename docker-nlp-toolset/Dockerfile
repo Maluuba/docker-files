@@ -29,7 +29,7 @@ RUN /tmp/docker_dir/install_rvm.sh
 
 # Training libraries
 # LIBSVM
-ENV LIBSVM_PATH=/tmp/LIBSVM
+ENV LIBSVM_PATH /tmp/LIBSVM
 RUN mkdir -p $LIBSVM_PATH \
     && curl http://www.csie.ntu.edu.tw/~cjlin/libsvm/libsvm-3.20.tar.gz \
     | tar xvz --directory $LIBSVM_PATH \
@@ -39,7 +39,8 @@ RUN mkdir -p $LIBSVM_PATH \
     && cp svm-predict /usr/local/bin/
 
 # CRFPP
-ENV CRFPP_PATH=/tmp/CRFPP
+ENV CRFPP_PATH /tmp/CRFPP
+ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
 RUN mkdir -p $CRFPP_PATH \
     && curl https://crfpp.googlecode.com/files/CRF%2B%2B-0.58.tar.gz \
     | tar xvz --directory $CRFPP_PATH \
