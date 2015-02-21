@@ -34,8 +34,8 @@ RUN mkdir -p $LIBSVM_PATH \
     && curl http://www.csie.ntu.edu.tw/~cjlin/libsvm/libsvm-3.20.tar.gz \
     | tar xvz --directory $LIBSVM_PATH \
     && cd $LIBSVM_PATH/libsvm-* \
-    && make
-    && cp svm-train /usr/local/bin/
+    && make \
+    && cp svm-train /usr/local/bin/ \
     && cp svm-predict /usr/local/bin/
 
 # CRFPP
