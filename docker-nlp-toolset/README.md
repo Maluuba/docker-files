@@ -5,9 +5,9 @@ All the docker files to deploy the NLP Toolset.
 
 ### Usage
 
-Get the NlpToolset (https://github.com/Maluuba/NlpToolset) repository.
+Get the NlpToolset (https://github.com/Maluuba/NlpToolset) repository and follow the set up directions for passwords and keys in its README.
 
-Set the password in NlpToolset/config/environments/production.rb
+Here is the basic command to start the NLP Toolset.  You can see the Xmx lower if you need to but 3g is recommended.
 
 ```
 docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v ~/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
@@ -19,13 +19,13 @@ Or with Boot2Docker on Windows:
 docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v /c/Users/username/Documents/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
 ```
 
-For example:
+For example (with Boot2Docker on Windows):
 
 ```
 docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v /c/Users/justin/Documents/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
 ```
 
-When doing local tests for changes to the NlpToolset you should run Rails in development mode and re-use your existing git keys, Maven cache, and workspace:
+When doing local tests for changes to the NlpToolset you should run in development mode and re-use your existing git keys, Maven cache, and workspace.  Here is a template command:
 
 ```
 docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -e RAILS_ENV=development -v /path/to/workspace/NlpToolset:/NlpToolset -v /path/to/.m2:/root/.m2 -v /path/to/.ssh:/tmp/ssh_mounted_keys -v /path/to/workspace:/NlpToolset/nlprepos/justin@maluuba.com/Maluuba --name=nlp-toolset --rm maluuba/nlp-toolset
@@ -39,7 +39,9 @@ docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -e RA
 
 Note: Add sys trace capacity to get around the tomcat init.d script bug. See [Docker issue 6800](https://github.com/docker/docker/issues/6800) for details.
 
-Then point your browser at [http://localhost:3000/](http://localhost:3000/) or [http://192.168.59.103:3000/](http://192.168.59.103:3000/) if you are using boot2docker.
+Note: With Boot2Docker, you may notice that accessing your workspace is slow so you might prefer to use a workspace that is just on the Boot2Docker VM rather than one mounted to your actual OS.
+
+Then point your browser at [http://localhost:3000/](http://localhost:3000/) or [http://192.168.59.103:3000/](http://192.168.59.103:3000/) if you are using Boot2Docker.
 
 ## Building
 
