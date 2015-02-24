@@ -10,19 +10,19 @@ Get the NlpToolset (https://github.com/Maluuba/NlpToolset) repository and follow
 Here is the basic command to start the NLP Toolset.  You can see the Xmx lower if you need to but 3g is recommended.
 
 ```
-docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v ~/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
+docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v ~/workspace/NlpToolset:/NlpToolset -v /path/to/.m2/settings.xml:/usr/share/tomcat7/.m2/settings.xml --name=nlp_toolset --rm maluuba/nlp-toolset
 ```
 
 Or with Boot2Docker on Windows:
 
 ```
-docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v /c/Users/username/Documents/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
+docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v /c/Users/username/Documents/workspace/NlpToolset:/NlpToolset -v /c/Users/username/.m2/settings.xml:/usr/share/tomcat7/.m2/settings.xml --name=nlp_toolset --rm maluuba/nlp-toolset
 ```
 
 For example (with Boot2Docker on Windows):
 
 ```
-docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v /c/Users/justin/Documents/workspace/NlpToolset:/NlpToolset --name=nlp_toolset --rm maluuba/nlp-toolset
+docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e _JAVA_OPTIONS="-Xmx3g" -v /c/Users/justin/Documents/workspace/NlpToolset:/NlpToolset -v /c/Users/justin/.m2/settings.xml:/usr/share/tomcat7/.m2/settings.xml --name=nlp_toolset --rm maluuba/nlp-toolset
 ```
 
 When doing local tests for changes to the NlpToolset you should run in development mode and re-use your existing git keys, Maven cache, and workspace.  Here is a template command:
