@@ -20,7 +20,9 @@ cd $NLP_TOOLSET_DIR
 
 rm -rf tmp/pids/server.pid
 
-cp script/nlptoolset.conf /etc/init/nlptoolset.conf
+# We should be using upstart but it doesn't work in Docker.
+#cp script/nlptoolset.conf /etc/init/nlptoolset.conf
+#chmod -x /etc/init/nlptoolset.conf
 
 rvm use jruby-1.7.10@nlp-toolset
 
@@ -44,7 +46,10 @@ if [ "${RAILS_ENV}" == 'production' ]; then
 	cp $NLP_TOOLSET_DIR/target/NlpToolset.war /var/lib/tomcat7/webapps/ROOT.war
 	service tomcat7 restart
 
-	start nlptoolset
+	# We should be using upstart but it doesn't work in Docker.
+	#start nlptoolset
+	# Instead we start the worker explicitly.
+	rake jobs:work&
 else
 	mkdir -p /root/.ssh/
 	# Get default known_hosts.
