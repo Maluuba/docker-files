@@ -49,7 +49,8 @@ if [ "${RAILS_ENV}" == 'production' ]; then
 	# We should be using upstart but it doesn't work in Docker.
 	#start nlptoolset
 	# Instead we start the worker explicitly.
-	rake jobs:work&
+	# Start the worker as the tomcat7 (rather than root).
+	sudo -u tomcat7 rake jobs:work&
 else
 	mkdir -p /root/.ssh/
 	# Get default known_hosts.
