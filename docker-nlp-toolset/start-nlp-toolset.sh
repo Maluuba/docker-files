@@ -33,6 +33,7 @@ rake db:migrate
 TOMCAT7_HOME=/usr/share/tomcat7
 
 chown -R tomcat7:tomcat7 $TOMCAT7_HOME/nlptoolset/db
+chown -R tomcat7:tomcat7 $TOMCAT7_HOME/nlptoolset/nlprepos
 
 if [ "${RAILS_ENV}" == 'production' ]; then
 	cp --recursive --force /tmp/ssh_mounted_keys/* $TOMCAT7_HOME/.ssh/
