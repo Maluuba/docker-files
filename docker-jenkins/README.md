@@ -8,11 +8,11 @@ See [The Maluuba Jenkins Wiki page][1] for details.
 
 To run the container, do the following:
 
-    docker run --detach=true --publish-all=true --name="maluuba-jenkins" --volume /var/jenkins:/jenkins maluuba/jenkins
+    docker run --detach=true --publish-all=true --name="maluuba-jenkins" --volume /var/jenkins:/jenkins maluuba/docker-jenkins
     
     docker ps
     CONTAINER ID        IMAGE                       COMMAND                CREATED             STATUS              PORTS                     NAMES
-    1131d37c38b1        maluuba/jenkins:latest    java -jar /opt/jenki   12 seconds ago      Up 12 seconds       0.0.0.0:49153->8080/tcp   drunk_fermi
+    1131d37c38b1        maluuba/docker-jenkins:latest    java -jar /opt/jenki   12 seconds ago      Up 12 seconds       0.0.0.0:49153->8080/tcp   drunk_fermi
 
 Your jenkins instance is now available by going to http://localhost:49153 .
 
@@ -34,7 +34,7 @@ To build the image, simply invoke
 
 A prebuilt container is also available in the docker index
 
-    docker pull maluuba/jenkins
+    docker pull maluuba/docker-jenkins
 
 
 ## Author
