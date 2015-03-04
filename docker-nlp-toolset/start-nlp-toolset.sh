@@ -53,6 +53,7 @@ if [ "${RAILS_ENV}" == 'production' ]; then
 	#start nlptoolset
 	# Instead we start the worker explicitly.
 	# Start the worker as the tomcat7 (rather than root).
+	# FIXME Make sure rake is installed for the tomcat7 user.
 	sudo --user=tomcat7 rake jobs:work&
 else
 	mkdir -p /root/.ssh/
