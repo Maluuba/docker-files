@@ -46,12 +46,14 @@ if [ "${RAILS_ENV}" == 'production' ]; then
 	rm -rf /var/lib/tomcat7/webapps/ROOT*
 	cp $NLP_TOOLSET_DIR/target/NlpToolset.war /var/lib/tomcat7/webapps/ROOT.war
 	service tomcat7 restart
+	sleep 10
+	tail -n 100 /var/log/tomcat7/catalina.out
 
 	# We should be using upstart but it doesn't work in Docker.
 	#start nlptoolset
 	# Instead we start the worker explicitly.
 	# Start the worker as the tomcat7 (rather than root).
-	sudo -u tomcat7 rake jobs:work&
+	sudo --user=tomcat7 rake jobs:work&
 else
 	mkdir -p /root/.ssh/
 	# Get default known_hosts.
