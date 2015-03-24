@@ -88,7 +88,7 @@ A prebuilt container is also available in the docker index
     
 ## Author
 
-  * Justin Harris (<github.com/juharris>)
+  * Justin Harris (github.com/juharris)
 
 ## LICENSE
 
