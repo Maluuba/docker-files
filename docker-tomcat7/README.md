@@ -8,7 +8,7 @@ All the docker files to deploy [Apache Tomcat 7](http://tomcat.apache.org/downlo
 ```
 # Place your war file(s) in local directory called deployment and add it as a volume 
 #
-# Optinally specify JAVA_OPTS to be added to default JAVA_OPTS for tomcat
+# Optionally specify JAVA_OPTS to be added to default JAVA_OPTS for tomcat
 #
 # Optionally specify a custom Xmx parameter to replace default setting for tomcat
 #
