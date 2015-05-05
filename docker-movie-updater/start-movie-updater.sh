@@ -8,12 +8,36 @@ then
 	/deployment/init.sh
 fi
 
-if [ -d /deployment ];
-then
-	echo "Mapping deployed wars"
-	rm -rf /var/lib/tomcat7/webapps
-	ln -s /deployment /var/lib/tomcat7/webapps
-fi
+echo "Setting up AWS Client"
+
+mkdir -p ~/.aws
+cat <<EOF > ~/.aws/credentials
+[default]
+aws_access_key_id = ${AWS_KEY}
+aws_secret_access_key = ${AWS_SECRET}
+EOF
+
+export AWS_ACCESS_KEY_ID=${AWS_KEY}
+export AWS_SECRET_ACCESS_KEY=${AWS_SECRET}
+
+cat <<EOF > ~/.aws/config
+[default]
+output = json
+region = us-east-1
+EOF
+
+echo "Mapping deployed wars"
+rm -rf /var/lib/tomcat7/webapps
+rm -rf /deployment/*
+ln -s /deployment /var/lib/tomcat7/webapps
+
+aws s3 cp s3://${S3_PATH} /deployment/${LOCAL_PATH}
+aws s3 cp s3://maluuba-content/movie-update-scripts/updateMovies.sh ~/updater
+aws s3 cp s3://maluuba-content/movie-update-scripts/updateRatings.sh ~/updater
+
+chmod +x ~/updater/updateMovies.sh
+chmod +x ~/updater/updateRatings.sh
+(crontab -l 2>/dev/null; echo "*/15 * * * ~/updater/updateMovies"; echo "0 9 * * * ~/updater/updateRatings.sh")| crontab -
 
 if [ -n "${Xmx}" ];
 then
@@ -29,9 +53,4 @@ fi
 
 chown tomcat7:tomcat7 /deployment
 service tomcat7 restart
-
-#Override the exit command to prevent accidental container distruction 
-echo 'alias exit="echo Are you sure? this will kill the container. use Ctrl + p, Ctrl + q to detach or ctrl + d to exit"' > ~/.bashrc
-
-#Run bash to keep container running and provide interactive mode
 bash
