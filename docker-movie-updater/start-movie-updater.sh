@@ -37,7 +37,7 @@ aws s3 cp s3://maluuba-content/movie-update-scripts/updateRatings.sh ~/updater
 
 chmod +x ~/updater/updateMovies.sh
 chmod +x ~/updater/updateRatings.sh
-(crontab -l 2>/dev/null; echo "*/15 * * * ~/updater/updateMovies"; echo "0 9 * * * ~/updater/updateRatings.sh")| crontab -
+(crontab -l 2>/dev/null; echo "*/15 * * * * ~/updater/updateMovies"; echo "0 9 * * * ~/updater/updateRatings.sh")| crontab -
 
 if [ -n "${Xmx}" ];
 then
