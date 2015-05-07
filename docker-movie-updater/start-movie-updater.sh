@@ -32,12 +32,10 @@ rm -rf /deployment/*
 ln -s /deployment /var/lib/tomcat7/webapps
 
 aws s3 cp s3://${S3_PATH} /deployment/${LOCAL_PATH}
-aws s3 cp s3://maluuba-content/movie-update-scripts/updateMovies.sh ~/updater
-aws s3 cp s3://maluuba-content/movie-update-scripts/updateRatings.sh ~/updater
-
-chmod +x ~/updater/updateMovies.sh
-chmod +x ~/updater/updateRatings.sh
-(crontab -l 2>/dev/null; echo "*/15 * * * * ~/updater/updateMovies"; echo "0 9 * * * ~/updater/updateRatings.sh")| crontab -
+aws s3 cp s3://maluuba-content/movie-update-scripts/updateMovies.sh /opt/updater/updateMovies.sh
+aws s3 cp s3://maluuba-content/movie-update-scripts/updateRatings.sh /opt/updater/updateRatings.sh
+chmod -R 777 /opt/updater
+(crontab -l 2>/dev/null; echo "*/15 * * * * /opt/updater/updateMovies.sh"; echo "0 9 * * * /opt/updater/updateRatings.sh"; echo "")| crontab -
 
 if [ -n "${Xmx}" ];
 then
@@ -53,4 +51,5 @@ fi
 
 chown tomcat7:tomcat7 /deployment
 service tomcat7 restart
+cron
 bash
