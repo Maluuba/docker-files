@@ -28,11 +28,11 @@ or [http://192.168.59.103:8080/](http://192.168.59.103:8080/) if you are using b
 
 To build the image, simply invoke
 
-    docker build github.com/maluuba/docker-tomcat7
+    docker build github.com/maluuba/docker-docker-movie-updater
 
 A prebuilt container is also available in the docker index
 
-    docker pull maluuba/tomcat7
+    docker pull maluuba/docker-docker-movie-updater
     
 
 ## LICENSE
