@@ -26,7 +26,7 @@ RUN unzip /tmp/awscli-bundle.zip -d /tmp \
 ADD start-movie-updater.sh /opt/start-movie-updater.sh
 RUN chmod +x /opt/start-movie-updater.sh
 
-# Set the time zone to the local time zone
+# Set the time zone to the timezone used by our movie provider since they name their files based on their local date.
 RUN echo "America/New_York" > /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
 
 VOLUME /deployment
