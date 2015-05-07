@@ -1,6 +1,7 @@
 DockerFiles
 ===========
 
+The movie updater is used to process movie data dump updates and run them through the included tomcat7 compatible service to insert them into own DB. The scripts movieUpdater.sh and ratingsUpdater.sh should be hosted somewhere accessible as they will be pulled down and put on the crontab, responsible for grabbing the updates from chosen location.
 All the docker files to deploy [Apache Tomcat 7](http://tomcat.apache.org/download-70.cgi) in a docker container.
 
 ### Usage
