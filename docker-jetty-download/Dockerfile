@@ -4,11 +4,9 @@ MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 EXPOSE 8080
 
 # Install Java
-RUN apt-get -qq update
-RUN apt-get -qq upgrade
-RUN apt-get -qq install openjdk-7-jdk
-RUN apt-get -qq install curl
-RUN apt-get -qq install bash
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get -y install openjdk-7-jdk curl unzip bash
 
 ADD start-jetty.sh /opt/start-jetty.sh
 RUN chmod +x /opt/start-jetty.sh
@@ -28,7 +26,9 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8 
 
-
+ADD https://s3.amazonaws.com/aws-cli/awscli-bundle.zip /tmp/
+RUN unzip /tmp/awscli-bundle.zip -d /tmp \
+&& /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 
 # Run Jetty

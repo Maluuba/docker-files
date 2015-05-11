@@ -8,13 +8,15 @@ All the docker files to deploy [Apache Tomcat 7](http://tomcat.apache.org/downlo
 ```
 # Place your war file(s) in local directory called deployment and add it as a volume 
 #
-# Optionally specify JAVA_OPTS to be added to default JAVA_OPTS for tomcat
+# Optinally specify JAVA_OPTS to be added to default JAVA_OPTS for tomcat
 #
 # Optionally specify a custom Xmx parameter to replace default setting for tomcat
 #
 # Optionally add a startup script at deployment/init.sh and it will be run inside the 
 #     container before tomcat comes up
-#
+# Optionally Add the environment variables AWS_KEY and AWS_SECRET to configure AWS s3 access, 
+#     and S3_PATH and LOCAL_PATH to download a war file. 
+
 $docker run --cap-add SYS_PTRACE -it -p 8080:8080 -e JAVA_OPTS='-Dsome.property=value' 
     -e Xmx=2048m -v deployment:/deployment maluuba/tomcat7
 ```

@@ -8,7 +8,7 @@ RUN apt-get -qq install nodejs npm mongodb git
 RUN apt-get -qq install bash
 
 RUN mkdir /opt/uptime
-RUN rm -fr /opt/uptime && git clone --depth=1 -b digest-support https://github.com/Maluuba/uptime.git  /opt/uptime
+RUN rm -fr /opt/uptime && git clone --depth=1 --branch digest-support https://github.com/Maluuba/uptime.git  /opt/uptime
 
 
 

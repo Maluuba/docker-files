@@ -18,5 +18,4 @@ else
         echo "No init script found at $JENKINS_INIT_PATH, you can see an example of the recommended script at https://github.com/Maluuba/deployment/blob/master$JENKINS_INIT_PATH"
 fi
 
-#Override the exit command to prevent accidental container distruction 
 java -jar /opt/jenkins.war

@@ -1,12 +1,13 @@
 DockerFiles
 ===========
 
+The movie updater is used to process movie data dump updates and run them through the included tomcat7 compatible service to insert them into own DB. The scripts movieUpdater.sh and ratingsUpdater.sh should be hosted somewhere accessible as they will be pulled down and put on the crontab, responsible for grabbing the updates from chosen location.
 All the docker files to deploy [Apache Tomcat 7](http://tomcat.apache.org/download-70.cgi) in a docker container.
 
 ### Usage
 
 ```
-# Place your war file(s) in local directory called deployment and add it as a volume 
+# Place your war file in local directory called deployment and add it as a volume 
 #
 # Optionally specify JAVA_OPTS to be added to default JAVA_OPTS for tomcat
 #
@@ -28,15 +29,12 @@ or [http://192.168.59.103:8080/](http://192.168.59.103:8080/) if you are using b
 
 To build the image, simply invoke
 
-    docker build github.com/maluuba/docker-tomcat7
+    docker build github.com/maluuba/docker-docker-movie-updater
 
 A prebuilt container is also available in the docker index
 
-    docker pull maluuba/tomcat7
+    docker pull maluuba/docker-docker-movie-updater
     
-## Author
-
-  * Usman Ismail (<usman.ismail@maluuba.com>)
 
 ## LICENSE
 
