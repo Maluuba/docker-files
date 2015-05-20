@@ -7,7 +7,7 @@ All the docker files to deploy the NLP Toolset.
 
 Get the NlpToolset (https://github.com/Maluuba/NlpToolset) repository and follow the set up directions for passwords and keys in its README.
 
-Here is the basic command to start the NLP Toolset.  You can see the Xmx lower if you need to but 3g is recommended.
+Here is the basic command to start the NLP Toolset.  You can set the Xmx lower if you need to but 3g is recommended.
 
 ```
 docker run --cap-add SYS_PTRACE \
