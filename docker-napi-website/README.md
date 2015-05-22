@@ -10,80 +10,57 @@ Get the website (https://github.com/Maluuba/NapiWebsite) repository and follow t
 Here is the basic command to start the website.
 
 ```
-docker run --cap-add SYS_PTRACE \
+docker run \
   -it -p 8080:8080 \
-  -v ~/workspace/NlpToolset:/NlpToolset \
-  -v /path/to/.m2/settings.xml:/usr/share/tomcat7/.m2/settings.xml \
-  --name=nlp_toolset --rm \
-  maluuba/nlp-toolset
+  -v ~/workspace/NapiWebsite:/NapiWebsite \
+  --name=napi-website --rm \
+  maluuba/napi-website
 ```
 
 Or with Boot2Docker on Windows:
 
 ```
-docker run --cap-add SYS_PTRACE \
+docker run \
   -it -p 8080:8080 \
-  -e _JAVA_OPTIONS="-Xmx3g" \
-  -v /c/Users/username/Documents/workspace/NlpToolset:/NlpToolset \
-  -v /c/Users/username/.m2/settings.xml:/usr/share/tomcat7/.m2/settings.xml --name=nlp_toolset --rm \
-  maluuba/nlp-toolset
+  -v /c/Users/username/Documents/workspace/NapiWebsite:/NapiWebsite \
+  --name=napi-website --rm \
+  maluuba/napi-website
 ```
 
 For example (with Boot2Docker on Windows):
 
 ```
-docker run --cap-add SYS_PTRACE \
+docker run \
   -it -p 8080:8080 \
-  -e _JAVA_OPTIONS="-Xmx3g" \
-  -v /c/Users/justin/Documents/workspace/NlpToolset:/NlpToolset \
-  -v /c/Users/justin/.m2/settings.xml:/usr/share/tomcat7/.m2/settings.xml \
-  --name=nlp_toolset --rm \
-  maluuba/nlp-toolset
+  -v /c/Users/justin/Documents/workspace/NapiWebsite:/NapiWebsite \
+  --name=napi-website --rm \
+  maluuba/napi-website
 ```
 
-When doing local tests for changes to the NlpToolset you should run in development mode and re-use your existing git keys, Maven cache, and workspace.  Here is a template command:
+When doing local tests you should run in development.  Here is a template command:
 
 ```
-docker run --cap-add SYS_PTRACE \
+docker run \
   -it -p 8080:8080 \
-  -e _JAVA_OPTIONS="-Xmx3g" \
   -e RAILS_ENV=development \
-  -v /path/to/workspace/NlpToolset:/NlpToolset \
-  -v /path/to/.m2:/root/.m2 \
-  -v /path/to/.ssh:/tmp/ssh_mounted_keys \
-  -v /path/to/workspace:/NlpToolset/nlprepos/justin@maluuba.com/Maluuba --name=nlp-toolset --rm maluuba/nlp-toolset
-```
-
-For example:
-
-```
-docker run --cap-add SYS_PTRACE \
-  -it -p 8080:8080 \
-  -e _JAVA_OPTIONS="-Xmx3g" \
-  -e RAILS_ENV=development \
-  -v /c/Users/justin/Documents/workspace/NlpToolset:/NlpToolset \
-  -v /c/Users/justin/.m2:/root/.m2 \
-  -v /c/Users/justin/.ssh:/tmp/ssh_mounted_keys \
-  -v /c/Users/justin/Documents/workspace:/NlpToolset/nlprepos/justin@maluuba.com/Maluuba \
-  --name=nlp-toolset --rm \
-  maluuba/nlp-toolset
+  -v /path/to/workspace/NapiWebsite:/NapiWebsite \
+  --name=napi-website --rm \
+  maluuba/napi-website
 ```
 
 Note: Add sys trace capacity to get around the tomcat init.d script bug. See [Docker issue 6800](https://github.com/docker/docker/issues/6800) for details.
 
-Note: With Boot2Docker, you may notice that accessing your workspace is slow so you might prefer to use a workspace that is just on the Boot2Docker VM rather than one mounted to your actual OS.
-
-Then point your browser at [http://localhost:3000/](http://localhost:3000/) or [http://192.168.59.103:3000/](http://192.168.59.103:3000/) if you are using Boot2Docker.
+Point your browser at [http://localhost:8080/](http://localhost:8080/) or [http://192.168.59.103:8080/](http://192.168.59.103:8080/) if you are using Boot2Docker.
 
 ## Building
 
 To build the image, simply invoke
 
-    docker build github.com/maluuba/docker-nlp-toolset
+    docker build github.com/maluuba/docker-napi-website
 
 A prebuilt container is also available in the docker index
 
-    docker pull maluuba/nlp-toolset
+    docker pull maluuba/napi-website
     
 ## Author
 
