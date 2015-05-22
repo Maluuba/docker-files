@@ -11,5 +11,6 @@ rvm install jruby-1.7.10
 echo 'gem: --no-rdoc --no-ri' >> ~/.gemrc
 gem install bundler --no-ri --no-rdoc
 rvm use --create jruby-1.7.10@nlp-toolset
+gem install bundler
 # Help cache gems even though the NlpToolset repo has the most up to date Gemfile's this still helps.
 bundle install

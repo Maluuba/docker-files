@@ -38,11 +38,11 @@ RUN mkdir -p $LIBSVM_PATH \
     && cp svm-train /usr/local/bin/ \
     && cp svm-predict /usr/local/bin/
 
-# CRFPP
+# CRFPP 0.58
 ENV CRFPP_PATH /tmp/CRFPP
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
 RUN mkdir -p $CRFPP_PATH \
-    && curl https://crfpp.googlecode.com/files/CRF%2B%2B-0.58.tar.gz \
+    && curl 'https://doc-08-74-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/adkmvuevnfj1kg6q6g655e5d4m0tg0t4/1432310400000/13553212398903315502/*/0B4y35FiV1wh7QVR6VXJ5dWExSTQ?e=download' \
     | tar xvz --directory $CRFPP_PATH \
     && cd $CRFPP_PATH/CRF* \
     && ./configure \
