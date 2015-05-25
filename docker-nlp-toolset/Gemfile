@@ -62,3 +62,6 @@ gem "daemons"
 
 #for parsing config files (.cfg), compatiable with python
 gem "configparser"
+
+# For the crowdflower API
+gem 'crowdflower'
