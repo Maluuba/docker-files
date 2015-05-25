@@ -13,14 +13,14 @@ Mount the EBS: `mkdir -p /opt/disk/; sudo mount /dev/xvdb /opt/disk/`
 
 Run the Docker
 ```
-$docker run --name="nominatim" -p 80:80 -v /home/ec2-user/config.sh:/app/config.sh -v /opt/disk:/app/disk/ -it -d maluuba/docker-nominatim
+$docker run --name="nominatim" -p 80:80 -v /home/ec2-user/config.sh:/app/config.sh -v /opt/disk:/app/disk/ -it -d maluuba/nominatim
 ```
 
 ## Building
 
 To build the image, simply invoke
 
-    docker build github.com/maluuba/docker-nominatim
+    docker build github.com/Maluuba/docker-files/tree/master/docker-nominatim
 
 A prebuilt container is also available in the docker index
 
