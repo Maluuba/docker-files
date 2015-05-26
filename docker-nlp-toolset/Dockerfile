@@ -41,9 +41,9 @@ RUN mkdir -p $LIBSVM_PATH \
 # CRFPP 0.58
 ENV CRFPP_PATH /tmp/CRFPP
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
+ADD libs /tmp/libs
 RUN mkdir -p $CRFPP_PATH \
-    && curl 'https://doc-08-74-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/ru4ieaqtmntv7o9jvfd92opeuacfok89/1432576800000/13553212398903315502/*/0B4y35FiV1wh7QVR6VXJ5dWExSTQ' \
-    | tar xvz --directory $CRFPP_PATH \
+    && tar xvz --directory=$CRFPP_PATH --file=/tmp/libs/CRF++-0.58.tar.gz
     && cd $CRFPP_PATH/CRF* \
     && ./configure \
     && make \
