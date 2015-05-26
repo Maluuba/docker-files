@@ -65,3 +65,6 @@ gem "configparser"
 
 # For the crowdflower API
 gem 'crowdflower'
+
+# For tokenizing input fields
+gem 'bootstrap_tokenfield_rails'
