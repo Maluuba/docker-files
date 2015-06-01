@@ -52,7 +52,7 @@ docker run --cap-add SYS_PTRACE \
   -v /path/to/workspace/NlpToolset:/NlpToolset \
   -v /path/to/.m2:/root/.m2 \
   -v /path/to/.ssh:/tmp/ssh_mounted_keys \
-  -v /path/to/workspace:/NlpToolset/nlprepos/justin@maluuba.com/Maluuba --name=nlp-toolset --rm maluuba/nlp-toolset
+  -v /path/to/workspace:/NlpToolset/nlprepos/youremail@maluuba.com/Maluuba --name=nlp-toolset --rm maluuba/nlp-toolset
 ```
 
 For example:
@@ -74,7 +74,7 @@ Note: Add sys trace capacity to get around the tomcat init.d script bug. See [Do
 
 Note: With Boot2Docker, you may notice that accessing your workspace is slow so you might prefer to use a workspace that is just on the Boot2Docker VM rather than one mounted to your actual OS.
 
-Then point your browser at [http://localhost:3000/](http://localhost:3000/) or [http://192.168.59.103:3000/](http://192.168.59.103:3000/) if you are using Boot2Docker.
+Then point your browser at [http://localhost:8080/](http://localhost:8080/) or [http://192.168.59.103:8080/](http://192.168.59.103:8080/) if you are using Boot2Docker.
 
 ## Building
 
