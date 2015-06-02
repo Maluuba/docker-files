@@ -62,7 +62,7 @@ else
 
 	# In development mode, we run as root so we need the SSH keys in root's home.
 	cp --recursive --force /tmp/ssh_mounted_keys/* /root/.ssh/
-	chmod 600 /root/.ssh/id_rsa
+	chmod 600 /root/.ssh/*
 
 	rails server --port=8080&
 	sleep 20

@@ -43,7 +43,7 @@ ENV CRFPP_PATH /tmp/CRFPP
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/lib
 ADD libs /tmp/libs
 RUN mkdir -p $CRFPP_PATH \
-    && tar xvz --directory=$CRFPP_PATH --file=/tmp/libs/CRF++-0.58.tar.gz
+    && tar xvz --directory=$CRFPP_PATH --file=/tmp/libs/CRF++-0.58.tar.gz \
     && cd $CRFPP_PATH/CRF* \
     && ./configure \
     && make \
