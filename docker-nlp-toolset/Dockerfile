@@ -6,9 +6,9 @@ RUN apt-get install -qqy git
 # Java
 RUN apt-get install -qqy openjdk-7-jdk
 # pip for ServiceTemplates
-RUN apt-get install libmysqlclient-dev python-dev libxml2-dev libxslt-dev python-pip build-essential \
-  && pip install pip==1.4.1 \
-  && easy_install -U distribute
+RUN apt-get install -qqy libmysqlclient-dev python-dev libxml2-dev libxslt-dev python-pip build-essential \
+  && yes | pip install pip==1.4.1 \
+  && yes | easy_install -U distribute
 
 # Maven
 RUN apt-get remove maven2
