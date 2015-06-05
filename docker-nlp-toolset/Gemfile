@@ -22,6 +22,7 @@ gem 'strong_parameters'
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'handlebars_assets'
+  gem 'sass', '3.4.14'
   gem 'sass-rails',   '~> 3.2.3'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -68,3 +69,5 @@ gem 'crowdflower'
 
 # For tokenizing input fields
 gem 'bootstrap_tokenfield_rails'
+
+gem 'materialize-sass', github: 'mkhairi/materialize-sass'
