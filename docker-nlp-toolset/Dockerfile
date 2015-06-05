@@ -1,6 +1,7 @@
 FROM maluuba/tomcat7
 MAINTAINER Maluuba NLP Team <nlp@maluuba.com>
 
+RUN apt-get -y update && apt-get -y upgrade
 # Git
 RUN apt-get install -qqy git
 # Java
