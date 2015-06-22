@@ -48,7 +48,7 @@ email:
 basicAuth:
   username:    admin
   password:    password
-verbose: true # only used in dev
+verbose: false # For dev, use true.
 
 webPageTest:
   server: 'http://www.webpagetest.org'
