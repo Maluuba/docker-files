@@ -4,7 +4,7 @@ Dockerfile for setting up [Docker](https://github.com/dotcloud/docker) container
 
 Versions:
 
-* Jetty 8.1.15
+* Jetty 8.1.17
 
 ## Pulling
 
