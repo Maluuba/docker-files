@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -x
 
 NLP_TOOLSET_DIR=/NlpToolset
 INIT_SCRIPT_PATH=$NLP_TOOLSET_DIR/init.sh
