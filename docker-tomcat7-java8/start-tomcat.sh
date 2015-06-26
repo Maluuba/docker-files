@@ -31,7 +31,7 @@ if [ -n "${JAVA_HOME}" ];
 then
 	# Add java home if set in container
 	echo "Adding JAVA_HOME"
-	echo "JAVA_HOME=\"\${JAVA_HOME} ${JAVA_HOME} \"" >> /etc/default/tomcat7
+	echo "JAVA_HOME=\"${JAVA_HOME}\"" >> /etc/default/tomcat7
 fi
 
 chown tomcat7:tomcat7 /deployment
