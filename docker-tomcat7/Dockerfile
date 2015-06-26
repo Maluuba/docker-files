@@ -6,7 +6,8 @@ EXPOSE 8080
 RUN apt-get -qq update
 RUN apt-get -qq upgrade
 
-RUN apt-get -qq install openjdk-7-jre
+RUN curl -q http://cdn.azulsystems.com/zulu/2015-04-8.7-bin/zulu1.8.0_45-8.7.0.5-x86lx64.deb > zulu-8.deb
+RUN dpkg -iq zulu-8.deb
 RUN apt-get -qq install tomcat7
 RUN apt-get -qq install curl
 RUN apt-get -qq install bash
