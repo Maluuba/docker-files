@@ -3,12 +3,18 @@ MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 
 EXPOSE 8080
 
+# Required for apt-add-repository
+RUN apt-get -qq update
+RUN apt-get -qq install software-properties-common python-software-properties
+
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
+RUN apt-add-repository "deb http://repos.azulsystems.com/ubuntu stable main"
 RUN apt-get -qq update
 RUN apt-get -qq upgrade
 
-RUN apt-get -qq install openjdk-7-jre
-RUN apt-get -qq install tomcat7
+RUN apt-get -qq install zulu-8
 RUN apt-get -qq install curl
+RUN apt-get -qq install tomcat7
 RUN apt-get -qq install bash
 
 ADD start-tomcat.sh /opt/start-tomcat.sh
