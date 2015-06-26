@@ -31,4 +31,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en  
 ENV LC_ALL en_US.UTF-8  
 
+# Add lines to copy JAVA_HOME to tomcat defaults
+ADD start-tomcat.sh /opt/start-tomcat.sh
+
 ENTRYPOINT ["/opt/start-tomcat.sh"]

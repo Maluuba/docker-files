@@ -3,28 +3,35 @@
 
 if [ -f /deployment/init.sh ];
 then
-	echo "Running custom init script"
-	chmod +x /deployment/init.sh
-	/deployment/init.sh
+        echo "Running custom init script"
+        chmod +x /deployment/init.sh
+        /deployment/init.sh
 fi
 
 if [ -d /deployment ];
 then
-	echo "Mapping deployed wars"
-	rm -rf /var/lib/tomcat7/webapps
-	ln -s /deployment /var/lib/tomcat7/webapps
+        echo "Mapping deployed wars"
+        rm -rf /var/lib/tomcat7/webapps
+        ln -s /deployment /var/lib/tomcat7/webapps
 fi
 
 if [ -n "${Xmx}" ];
 then
-	sed -i s/Xmx.*\ /Xmx${Xmx}\ /g /etc/default/tomcat7
+        sed -i s/Xmx.*\ /Xmx${Xmx}\ /g /etc/default/tomcat7
 fi
 
 if [ -n "${JAVA_OPTS}" ];
 then
-	# Add any Java opts that are set in the container
-	echo "Adding JAVA OPTS"
-	echo "JAVA_OPTS=\"\${JAVA_OPTS} ${JAVA_OPTS} \"" >> /etc/default/tomcat7
+        # Add any Java opts that are set in the container
+        echo "Adding JAVA OPTS"
+        echo "JAVA_OPTS=\"\${JAVA_OPTS} ${JAVA_OPTS} \"" >> /etc/default/tomcat7
+fi
+
+if [ -n "${JAVA_HOME}" ];
+then
+	# Add java home if set in container
+	echo "Adding JAVA_HOME"
+	echo "JAVA_HOME=\"\${JAVA_HOME} ${JAVA_HOME} \"" >> /etc/default/tomcat7
 fi
 
 chown tomcat7:tomcat7 /deployment
