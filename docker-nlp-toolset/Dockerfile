@@ -60,8 +60,6 @@ RUN mkdir -p /usr/share/tomcat7/nlptoolset/nlprepos
 RUN mkdir -p /usr/share/tomcat7/nlptoolset/db
 RUN chown -R tomcat7:tomcat7 /usr/share/tomcat7/nlptoolset
 
-# TODO Install rvm for tomcat7
-
 EXPOSE 8080
 
 ADD start-nlp-toolset.sh /opt/start-nlp-toolset.sh

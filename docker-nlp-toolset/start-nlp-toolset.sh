@@ -34,6 +34,7 @@ TOMCAT7_HOME=/usr/share/tomcat7
 
 chown -R tomcat7:tomcat7 $TOMCAT7_HOME/nlptoolset/db
 chown -R tomcat7:tomcat7 $TOMCAT7_HOME/nlptoolset/nlprepos
+chown -R tomcat7:tomcat7 $TOMCAT7_HOME/lib
 
 if [ "${RAILS_ENV}" == 'production' ]; then
 	cp --recursive --force /tmp/ssh_mounted_keys/* $TOMCAT7_HOME/.ssh/
@@ -53,8 +54,12 @@ if [ "${RAILS_ENV}" == 'production' ]; then
 	#start nlptoolset
 	# Instead we start the worker explicitly.
 	# Start the worker as the tomcat7 (rather than root).
-	# FIXME Make sure rake is installed for the tomcat7 user.
-	sudo --user=tomcat7 rake jobs:work&
+	sudo --user=tomcat7 bash --login <<'EOF'
+export RAILS_ENV=production
+source /etc/profile.d/rvm.sh
+rvm use jruby-1.7.10@nlp-toolset
+rake jobs:work&
+EOF
 else
 	mkdir -p /root/.ssh/
 	# Get default known_hosts.
