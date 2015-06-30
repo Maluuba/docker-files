@@ -12,10 +12,8 @@ RUN apt-get install -qqy libmysqlclient-dev python-dev libxml2-dev libxslt-dev p
   && yes | easy_install -U distribute
 
 # jq for command line JSON
-RUN mkdir -p /tmp/jq_dir
-RUN curl -sSL -o /tmp/jq_dir/jq http://stedolan.github.io/jq/download/linux64/jq
-RUN chmod +x /tmp/jq_dir/jq
-RUN mv /tmp/jq_dir/jq /usr/local/bin
+RUN curl -sSL -o /usr/local/bin/jq http://stedolan.github.io/jq/download/linux64/jq
+RUN chmod +x /usr/local/bin/jq
 
 # Maven
 RUN apt-get remove maven2
