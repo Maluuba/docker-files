@@ -11,6 +11,10 @@ RUN apt-get install -qqy libmysqlclient-dev python-dev libxml2-dev libxslt-dev p
   && yes | pip install pip==1.4.1 \
   && yes | easy_install -U distribute
 
+# jq for command line JSON
+RUN curl -sSL -o /usr/local/bin/jq http://stedolan.github.io/jq/download/linux64/jq
+RUN chmod +x /usr/local/bin/jq
+
 # Maven
 RUN apt-get remove maven2
 ENV MAVEN_VERSION 3.2.5
