@@ -13,6 +13,7 @@ ADD start-jenkins.sh /opt/start-jenkins.sh
 RUN chmod +x /opt/start-jenkins.sh
 RUN chmod 644 /opt/jenkins.war
 ENV JENKINS_HOME /jenkins
+ENV LANG C.UTF-8
 
 EXPOSE 8080
 
