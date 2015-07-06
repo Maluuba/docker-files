@@ -17,13 +17,14 @@ gem 'activerecord-jdbcsqlite3-adapter', '~> 1.3.0'
 # To use Strong Parameters from rails 4
 gem 'strong_parameters'
 
+gem 'sass', '3.4.14'
+gem 'sass-rails',   '~> 3.2.3'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'handlebars_assets'
-  gem 'sass', '3.4.14'
-  gem 'sass-rails',   '~> 3.2.3'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyrhino'
@@ -64,6 +65,9 @@ gem "daemons"
 #for parsing config files (.cfg), compatiable with python
 gem "configparser"
 
+#for grabbing categories for gazetteer generation using elastic search
+gem 'elasticsearch'
+
 # For the crowdflower API
 gem 'crowdflower'
 
@@ -71,3 +75,7 @@ gem 'crowdflower'
 gem 'bootstrap_tokenfield_rails'
 
 gem 'materialize-sass', github: 'mkhairi/materialize-sass'
+
+gem 'stringjs-rails'
+
+gem 'neatjson'
