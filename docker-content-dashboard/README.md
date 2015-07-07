@@ -2,6 +2,7 @@
 
 
 This repository contains **Dockerfile** of [Node.js](https://nodejs.org/) for [Docker](https://www.docker.com/) for Content Dashboard
+After the container starts up, it would first call *npm run build* then *npm run start*, which are scripts defined in *package.json* from the content dashboard project.
 
 
 
