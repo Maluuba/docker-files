@@ -1,4 +1,4 @@
-## Maluuba Nginx
+## Maluuba Content Dashboard
 
 
 This repository contains **Dockerfile** of [Node.js](https://nodejs.org/) for [Docker](https://www.docker.com/) for Content Dashboard
@@ -18,7 +18,7 @@ The previous command would give 1337 port to the dashboard
 
 ## LICENSE
 
-Copyright 2014 Maluuba
+Copyright 2015 Maluuba
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
