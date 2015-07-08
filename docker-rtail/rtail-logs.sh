@@ -7,7 +7,7 @@
 
 while true; do
 	pkill tail
-	find * -type f -iregex '.*catalina\.out\|.*'`date +"%Y_%m_%d"`'.*\.log' -exec sh -c "tail -F {} | rtail --id {} -h 'rtail-server' &" \;
+	find * -type f -iregex '.*catalina\.out\|.*'`date +"%Y_%m_%d"`'.*\.log' -exec sh -c "tail -F -n100 {} | rtail --id {} -h 'rtail-server' &" \;
 	watch -t -n 60 -g "find * -type f -iregex '.*catalina\.out\|.*\.log'"
 done
 

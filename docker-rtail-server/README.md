@@ -7,17 +7,19 @@ Runs a [rtail-server](https://github.com/kilianc/rtail) in a docker container.
 
 Defaults listening to ANYADDR (0.0.0.0) hostname, as incoming will be coming from the docker bridge, not localhost.
 
-UDP ports (default 9999), not exposed as you can just `--link` a rtail [client] to the rtail-server
+UDP ports (default 9999) not exposed as you can just `--link` a rtail [client] to the rtail-server
 
 ```
 # Run a rtail-server
 #
 # Optionally specify DEBUG to set log settings.
 #
-$docker run -dit -p 8888:8888 -e DEBUG=rtail:*  maluuba/rtail-server
+$docker run -dit --name=rtail-server -p 8888:8888 -e DEBUG=rtail:* maluuba/rtail-server
 ```
 
 Then point your browser at [http://localhost:8888/](http://localhost:8888/)
+
+Add streams with the [rtail container](/docker-rtail)
 
 ## Building
 
