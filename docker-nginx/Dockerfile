@@ -14,7 +14,7 @@ ADD start-nginx.sh /opt/start-nginx.sh
 
 RUN chmod 700 /opt/start-nginx.sh
 
-WORKDIR /tmp/nginx-openssl/openssl-1.0.1i
+WORKDIR /tmp/nginx-openssl/openssl-1.0.1g
 RUN ./config
 
 WORKDIR /tmp/nginx-openssl/nginx-1.7.5-maluuba
@@ -24,6 +24,10 @@ RUN make install
 RUN ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.0
 ENV LD_LIBRARY_PATH /lib/x86_64-linux-gnu/
 RUN useradd nginx
+
+# Increase ECDHE SSL security
+RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
+
  
 # Define mountable directories.
 VOLUME ["/usr/local/nginx/conf/sites-enabled", "/usr/local/nginx/conf/certs", "/usr/local/nginx/conf/conf.d", "/var/log/nginx"]
