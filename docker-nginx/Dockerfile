@@ -14,7 +14,8 @@ ADD start-nginx.sh /opt/start-nginx.sh
 
 RUN chmod 700 /opt/start-nginx.sh
 
-WORKDIR /tmp/nginx-openssl/openssl-1.0.1i
+ENV openssl_dir /tmp/nginx-openssl/openssl-1.0.1i
+WORKDIR ${openssl_dir}
 RUN ./config
 
 WORKDIR /tmp/nginx-openssl/nginx-1.7.5-maluuba
@@ -26,7 +27,7 @@ ENV LD_LIBRARY_PATH /lib/x86_64-linux-gnu/
 RUN useradd nginx
 
 # Increase ECDHE SSL security
-RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
+RUN ${openssl_dir}/apps/openssl dhparam -engine rdrand -out /etc/ssl/certs/dhparam.pem 4096
 
  
 # Define mountable directories.
