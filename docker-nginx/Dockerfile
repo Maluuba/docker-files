@@ -25,9 +25,6 @@ RUN make install
 RUN ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.0
 ENV LD_LIBRARY_PATH /lib/x86_64-linux-gnu/
 RUN useradd nginx
-
-# Increase ECDHE SSL security
-RUN ${openssl_dir}/apps/openssl dhparam -engine rdrand -out /usr/local/nginx/conf/dhparam.pem 4096
  
 # Define mountable directories.
 VOLUME ["/usr/local/nginx/conf/sites-enabled", "/usr/local/nginx/conf/certs", "/usr/local/nginx/conf/conf.d", "/var/log/nginx"]
