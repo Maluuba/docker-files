@@ -8,6 +8,8 @@ RUN apt-get -qq -y install inotify-tools
 
 RUN npm install -g rtail
 
+ENV FILES_IREGEX='.*\\.log' WATCH_IREGEX='.*\\.log'
+
 ADD rtail-logs.sh /opt/rtail-logs.sh
 RUN chmod +x /opt/rtail-logs.sh
 

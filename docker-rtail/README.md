@@ -11,9 +11,17 @@ Expects to be linked to a rtail-server, that is a docker `--link` with alias `rt
 
 Each log file will be piped to its own rtail instance with the id set to the path of the file.
 
-Work in Progress. Currently handles tomcat (Catalina.out) and jetty (Y_m_d.stderrout.log, i.e. 2015_07_07.stderrout.log) style log filenames in multi-level directories.
-That is, filenames that are static but undergo logrotate, or logs that also rollover everyday as the filename is timestamped (UTC). Supports new logs appearing that weren't there at container startup time. Only looks at the current day logs, older logs' rtail are closed.
-Ideally, just abstract the pattern to an environment variable and run it through the same mechanisms.
+Handles log filenames given by environment variables (`FILES_IREGEX` and `WATCH_IREGEX`) which contain a case insensitive regex pattern.
+Note that the variable will be evaluated to support function calls, be sure to escape properly.
+
+Supports new logs appearing that weren't there at container startup time; the environment variables are reevaluated during each refresh.
+Motivation is some logs undergo logrotate, or their names change (i.e. like a UTC timestamp), and you only want todays logs (since rtail doesn't persist anything).
+
+An example with node.js (node.log), tomcat (Catalina.out), and jetty (Y_m_d.stderrout.log, i.e. 2015_07_07.stderrout.log). New log files will be picked up, but only those with todays date will be sent to rtail.
+```
+FILES_IREGEX='.*catalina\\.out\\\|.*node\\.log\\\|.*`date +"%Y_%m_%d_%s"`.*\\.log'
+WATCH_IREGEX='.*catalina\\.out\\\|.*\\.log'
+```
 
 ```
 # Run rtail
@@ -21,6 +29,10 @@ Ideally, just abstract the pattern to an environment variable and run it through
 # Specify rtail-server to link to. Make sure the alias is 'rtail-server'. I.e. --link <container name/id>:rtail-server
 #
 # Specify volume to mount to '/logs'. Can be multiple logs in multiple directories.
+#
+# Optionally specify -e FILES_IREGEX to set log pattern for selecting files for rtail. Defaults to any path ending in .log
+#
+# Optionally specify -e WATCH_IREGEX to set log pattern for watching for changes in the log directory. Defaults to any path ending in .log
 #
 $docker run -dit --name=rtail --link rtail-server -v <path to log directory>:/logs maluuba/rtail
 ```
@@ -56,4 +68,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-    
