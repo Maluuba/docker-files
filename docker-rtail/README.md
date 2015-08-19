@@ -35,6 +35,8 @@ WATCH_IREGEX='.*catalina\\.out\\\|.*\\.log'
 # Optionally specify -e WATCH_IREGEX to set log pattern for watching for changes in the log directory. Defaults to any path ending in .log
 #
 $docker run -dit --name=rtail --link rtail-server -v <path to log directory>:/logs maluuba/rtail
+# For remote connectivity, use
+$docker run -dit --name=rtail ---add-host=docker-rtail:${RTAIL_SERVER_IP} -v <path to log directory>:/logs maluuba/rtail
 ```
 
 Then check out your logs from the [rtail-server](/docker-rtail-server)
