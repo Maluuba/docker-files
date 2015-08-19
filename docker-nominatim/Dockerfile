@@ -56,6 +56,7 @@ RUN chown nominatim: /app/nominatim
 WORKDIR /app/nominatim
 RUN sudo -u nominatim git clone --recursive https://github.com/twain47/Nominatim.git /app/nominatim/
 RUN sudo -u nominatim -s -- cd /app/nominatim && git pull && git submodule update --init
+RUN git checkout 138b8a2ada477d878cfca1036d8ec3c7fd37e1db
 RUN sudo -u nominatim ./autogen.sh
 RUN sudo -u nominatim ./configure
 RUN sudo -u nominatim make
