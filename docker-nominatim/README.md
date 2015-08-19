@@ -25,7 +25,15 @@ To build the image, simply invoke
 A prebuilt container is also available in the docker index
 
     docker pull maluuba/nominatim
-    
+
+## After Build
+
+If you have issues after building with utf-8 in functions, run:
+```
+sudo -u postgres -- /app/nominatim/utils/setup.php --create-functions --enable-diff-updates
+# Reload postgres assume the new config
+service postgresql restart
+```
 
 ## LICENSE
 
