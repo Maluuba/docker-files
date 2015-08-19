@@ -15,6 +15,7 @@ RUN apt-get -y install libtool libproj-dev
 RUN apt-get -y install libgeos++-dev
 RUN apt-get -y install gcc proj-bin libgeos-c1 git osmosis
 RUN apt-get -y install php5 php-pear php5-pgsql php5-json
+RUN apt-get -y -qq install libboost-all-dev
 
 # Some additional packages that may not already be installed
 # bc is needed in configPostgresql.sh
