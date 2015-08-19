@@ -14,8 +14,12 @@ UDP ports (default 9999) not exposed as you can just `--link` a rtail [client] t
 #
 # Optionally specify DEBUG to set log settings.
 #
-$docker run -dit --name=rtail-server -p 8888:8888 -e DEBUG=rtail:* maluuba/rtail-server
+$docker run -dit --name=rtail-server -p 8888:8888  -e DEBUG=rtail:* maluuba/rtail-server
+# For remote, use the following instead:
+$docker run -dit --name=rtail-server -p 8888:8888 -p 9999:9999/udp -e DEBUG=rtail:* maluuba/rtail-server
 ```
+
+Remember that rtail-server does not have authentication, so proper firewall rules are required for a cloud-based deployment.
 
 Then point your browser at [http://localhost:8888/](http://localhost:8888/)
 
