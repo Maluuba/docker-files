@@ -15,6 +15,7 @@ RUN apt-get -y install libtool libproj-dev
 RUN apt-get -y install libgeos++-dev
 RUN apt-get -y install gcc proj-bin libgeos-c1 git osmosis
 RUN apt-get -y install php5 php-pear php5-pgsql php5-json
+RUN apt-get -y -qq install libboost-all-dev
 
 # Some additional packages that may not already be installed
 # bc is needed in configPostgresql.sh
@@ -56,6 +57,7 @@ RUN chown nominatim: /app/nominatim
 WORKDIR /app/nominatim
 RUN sudo -u nominatim git clone --recursive https://github.com/twain47/Nominatim.git /app/nominatim/
 RUN sudo -u nominatim -s -- cd /app/nominatim && git pull && git submodule update --init
+RUN git checkout 138b8a2ada477d878cfca1036d8ec3c7fd37e1db
 RUN sudo -u nominatim ./autogen.sh
 RUN sudo -u nominatim ./configure
 RUN sudo -u nominatim make
