@@ -36,7 +36,7 @@ WATCH_IREGEX='.*catalina\\.out\\\|.*\\.log'
 #
 $docker run -dit --name=rtail --link rtail-server -v <path to log directory>:/logs maluuba/rtail
 # For remote connectivity, use
-$docker run -dit --name=rtail ---add-host=docker-rtail:${RTAIL_SERVER_IP} -v <path to log directory>:/logs maluuba/rtail
+$docker run -dit --name=rtail ---add-host=rtail-server:${RTAIL_SERVER_IP} -v <path to log directory>:/logs maluuba/rtail
 ```
 
 Then check out your logs from the [rtail-server](/docker-rtail-server)
