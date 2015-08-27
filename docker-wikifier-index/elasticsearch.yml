@@ -1,0 +1,20 @@
+cluster.name: maluubacluster
+# Maybe config.name can be removed.
+config.name: wikifier-elastic
+
+# Maybe can get rid of this to allow running static scripts.
+marvel.agent.enabled: false
+
+# Disable dynamic scripts.
+script.groovy.sandbox.enabled: false
+script.disable_dynamic: false
+
+path.data: /usr/share/elasticsearch/data
+path.work: /usr/share/elasticsearch/tmp
+
+index.number_of_shards: 5
+index.number_of_replicas: 0
+
+http.max_content_length: 500mb
+# Only use this if you have a dedicated Elasticsearch service and you don't think it will use all of the memory.
+#bootstrap.mlockall: true
