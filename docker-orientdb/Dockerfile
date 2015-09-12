@@ -19,7 +19,7 @@ RUN mkdir -p /var/log/supervisor
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-orientdb-on-an-ubuntu-12-04-vps
 RUN apt-get -y install openjdk-7-jdk git ant
 
-ENV ORIENTDB_VERSION 1.7.8
+ENV ORIENTDB_VERSION 2.0.8
 
 # Build OrientDB cleaning up afterwards
 RUN cd; git clone https://github.com/orientechnologies/orientdb.git --single-branch --depth 1 --branch $ORIENTDB_VERSION
