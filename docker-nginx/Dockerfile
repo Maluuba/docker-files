@@ -14,8 +14,7 @@ ADD start-nginx.sh /opt/start-nginx.sh
 
 RUN chmod 700 /opt/start-nginx.sh
 
-ENV openssl_dir /tmp/nginx-openssl/openssl-1.0.1i
-WORKDIR ${openssl_dir}
+WORKDIR /tmp/nginx-openssl/openssl-1.0.1i
 RUN ./config
 
 WORKDIR /tmp/nginx-openssl/nginx-1.7.5-maluuba
