@@ -25,6 +25,6 @@ rm -rf /opt/jetty/contexts/*
 aws s3 cp s3://${S3_LOGGING_PATH} /opt/jetty/etc/logging.xml
 aws s3 cp s3://${S3_CONTEXT_PATH} /opt/jetty/contexts/${LOCAL_PATH}.xml
 
-echo "${USER}: MD5:${PASSWORD_HASH},moderator" > opt/jetty/etc/${REALM_NAME}-realm.properties 
+echo "${USER}: MD5:${PASSWORD_HASH},moderator,oem-user" > opt/jetty/etc/${REALM_NAME}-realm.properties
 
 /opt/jetty/bin/jetty.sh run
