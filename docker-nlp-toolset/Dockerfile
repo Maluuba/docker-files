@@ -1,11 +1,9 @@
-FROM maluuba/tomcat7
+FROM maluuba/tomcat7-java8
 MAINTAINER Maluuba NLP Team <nlp@maluuba.com>
 
 RUN apt-get -y update && apt-get -y upgrade
 # Git
 RUN apt-get install -qqy git
-# Java
-RUN apt-get install -qqy openjdk-7-jdk
 # pip for ServiceTemplates
 RUN apt-get install -qqy libmysqlclient-dev python-dev libxml2-dev libxslt-dev python-pip build-essential \
   && yes | pip install pip==1.4.1 \
@@ -17,7 +15,7 @@ RUN chmod +x /usr/local/bin/jq
 
 # Maven
 RUN apt-get remove maven2
-ENV MAVEN_VERSION 3.2.5
+ENV MAVEN_VERSION 3.3.3
 RUN curl -sSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
