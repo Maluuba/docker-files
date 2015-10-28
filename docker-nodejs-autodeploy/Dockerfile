@@ -3,9 +3,6 @@ MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 
 EXPOSE 8080
 
-RUN apt-get -y update
-RUN apt-get -y upgrade
-
 RUN npm install forever
 
 # Setup UTF-8 based terminal
