@@ -3,10 +3,10 @@ MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 
 EXPOSE 8080
 
-RUN npm install forever
-ADD start-node.sh .
+RUN npm install -g forever
 
 # Start node
-ENTRYPOINT start-node.sh
+#ENTRYPOINT ls -R /
+ENTRYPOINT forever start /var/nodejs/app.js
 
 
