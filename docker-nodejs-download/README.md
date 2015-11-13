@@ -1,7 +1,7 @@
 DockerFiles
 ===========
 
-All the docker files to deploy [Apache Tomcat 7](http://tomcat.apache.org/download-70.cgi) in a docker container.
+All the docker files to deploy NodeJS in a docker container.
 
 ### Usage
 
@@ -16,7 +16,7 @@ All the docker files to deploy [Apache Tomcat 7](http://tomcat.apache.org/downlo
 
 ## LICENSE
 
-Copyright 2014 Maluuba
+Copyright 2015 Maluuba
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
