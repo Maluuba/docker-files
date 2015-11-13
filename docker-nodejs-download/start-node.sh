@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#This file needs to have LF line-endings to execute properly
 
 echo "Setting up AWS Client"
 
