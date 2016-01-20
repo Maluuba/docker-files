@@ -8,7 +8,7 @@ After the container starts up, it would first call *npm run build* then *npm run
 
 ### Usage Example
 
-    docker run --cap-add SYS_PTRACE -it -p 1337:1337 --rm --name=content-dashboard -v {Source code location}:/src maluuba/content-dashboard
+    docker run --cap-add SYS_PTRACE -it -p 1337:1337 --rm --name=content-dashboard -v {Source code location}:/src -v /var/log/node:/var/log/node maluuba/content-dashboard
 
 The previous command would give 1337 port to the dashboard
 
