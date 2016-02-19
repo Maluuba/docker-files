@@ -1,13 +1,17 @@
 FROM ubuntu
 MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 
+EXPOSE 8080
+
 RUN apt-get -qq update
 RUN apt-get -qq upgrade
 
-RUN apt-get -qq install openjdk-7-jre curl bash unzip gzip ftp cron wget
+RUN apt-get -qq install openjdk-7-jre tomcat7 curl bash unzip gzip ftp cron wget
 
 RUN mv /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
 
+ADD logrotate /etc/logrotate.d/tomcat7
+RUN chmod 644 /etc/logrotate.d/tomcat7
 
 # Setup UTF * based terminal
 RUN locale-gen en_US.UTF-8  
