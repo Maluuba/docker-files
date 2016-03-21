@@ -1,4 +1,4 @@
-FROM maluuba/scientific
+FROM maluuba/scientific:2.7
 MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 
 RUN mkdir -p /usr/src/app

@@ -1,4 +1,4 @@
 ## About 
 
-A base image with common scientific python libraries and Java.
+A base image with common scientific python libraries and latest Java.
 
