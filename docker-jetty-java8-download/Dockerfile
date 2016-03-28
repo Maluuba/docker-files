@@ -33,6 +33,7 @@ RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8 
+ENV JAVA_HOME /usr/lib/jvm/zulu-8-amd64/
 
 ADD https://s3.amazonaws.com/aws-cli/awscli-bundle.zip /tmp/
 RUN unzip /tmp/awscli-bundle.zip -d /tmp \
