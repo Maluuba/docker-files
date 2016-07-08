@@ -1,0 +1,3 @@
+grant codebase "file:/usr/lib/jvm/zulu-8-amd64/lib/tools.jar" {
+   permission java.security.AllPermission;
+};
