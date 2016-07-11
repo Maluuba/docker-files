@@ -1,14 +1,14 @@
-# docker-jetty9-java8:profiler
+# docker-tomcat7-java8:profiler
 
-Dockerfile for setting up [Docker](https://github.com/docker/docker) container with [Jetty](http://www.eclipse.org/jetty/) installed.
+Dockerfile for setting up [Docker](https://github.com/docker/docker) container tomcat7 installed.
 
 ## Pulling
 
-    $ docker pull maluuba/jetty9-java8:profiler
+    $ docker pull maluuba/tomcat7-java8:profiler
 
 ## Running
 
-    $ docker run -d -p 8080:8080 -i -t maluuba/jetty9-java8:profiler
+    $ docker run -d -p 8080:8080 -i -t maluuba/tomcat7-java8:profiler
 
 Then point your browser at [http://localhost:8080/](http://localhost:8080/)
 or [http://192.168.59.103:8080/](http://192.168.59.103:8080/) if you are using boot2docker
@@ -17,7 +17,7 @@ or [http://192.168.59.103:8080/](http://192.168.59.103:8080/) if you are using b
 
 From sources:
 
-    $ docker build github.com/maluuba/docker-jetty9-java8/profiler
+    $ docker build github.com/maluuba/docker-tomcat7-java8/profiler
     
 ## Author
 

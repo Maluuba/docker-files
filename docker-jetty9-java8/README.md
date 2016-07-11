@@ -1,18 +1,18 @@
-# docker-jetty-java8
+# docker-jetty9-java8
 
-Dockerfile for setting up [Docker](https://github.com/dotcloud/docker) container with [Jetty](http://www.eclipse.org/jetty/) installed.
+Dockerfile for setting up [Docker](https://github.com/docker/docker) container with [Jetty](http://www.eclipse.org/jetty/) installed.
 
 Versions:
 
-* Jetty 8.1.17
+* Jetty 9.3.8.v20160314 
 
 ## Pulling
 
-    $ docker pull maluuba/jetty-java8
+    $ docker pull maluuba/jetty9-java8
 
 ## Running
 
-    $ docker run -d -p 8080:8080 -i -t maluuba/jetty-java8
+    $ docker run -d -p 8080:8080 -i -t maluuba/jetty9-java8
 
 Then point your browser at [http://localhost:8080/](http://localhost:8080/)
 or [http://192.168.59.103:8080/](http://192.168.59.103:8080/) if you are using boot2docker
@@ -32,15 +32,15 @@ Optionally you can create a local folder with sub-folders for: webapps, config a
 
 From sources:
 
-    $ docker build github.com/maluuba/docker-jetty-java8
+    $ docker build github.com/maluuba/docker-jetty9-java8
     
 ## Author
 
-  * Justin Harris (http://github.com/juharris)
+  * Nick Ma (http://github.com/nma)
 
 ## LICENSE
 
-Copyright 2015 Maluuba
+Copyright 2016 Maluuba
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
