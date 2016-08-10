@@ -14,6 +14,8 @@ RUN apt-get -qq upgrade
 
 RUN apt-get -qq install curl bash unzip
 RUN apt-get -qq install default-jdk 
+RUN apt-get -qq install supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 ADD start-jetty.sh /opt/start-jetty.sh
 RUN chmod +x /opt/start-jetty.sh

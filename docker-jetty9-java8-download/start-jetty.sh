@@ -32,4 +32,4 @@ then
     echo "export JAVA_OPTIONS=\"\$\{JAVA_OPTIONS\} ${JAVA_OPTIONS}\""  >> /etc/default/jetty
 fi
 
-/opt/jetty/bin/jetty.sh run
+/usr/bin/supervisord
