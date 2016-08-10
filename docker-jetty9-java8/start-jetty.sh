@@ -31,5 +31,4 @@ then
 	/etc/jetty/init.sh
 fi
 
-
-/opt/jetty/bin/jetty.sh run
+/usr/bin/supervisord

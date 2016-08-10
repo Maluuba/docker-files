@@ -22,7 +22,6 @@ then
 	cp /etc/jetty/contexts/* /opt/jetty/contexts/
 fi
 
-
 # If check if custom init script exists
 if [ -e /etc/jetty/init.sh ];
 then
@@ -34,10 +33,8 @@ fi
 #Override the exit command to prevent accidental container distruction 
 echo 'alias exit="echo Are you sure? this will kill the container. use Ctrl + p, Ctrl + q to detach or ctrl + d to exit"' > ~/.bashrc
 
-/opt/jetty/bin/jetty.sh run &
-
 #Start jstatd in background
 jstatd -J-Djava.security.policy=$JAVA_HOME/jstatd.policy &
 
 #Run bash to keep container running and provide interactive mode
-bash
+/usr/bin/supervisord 
