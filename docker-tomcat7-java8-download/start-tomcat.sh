@@ -48,5 +48,5 @@ fi
 
 chown tomcat7:tomcat7 /deployment
 service tomcat7 restart
-bash
 
+tail -f /var/log/tomcat7/catalina.out
