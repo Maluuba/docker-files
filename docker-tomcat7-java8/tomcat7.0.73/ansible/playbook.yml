@@ -1,0 +1,61 @@
+- hosts: localhost
+  vars:
+    tomcat_version: "7.0.73" 
+    tomcat_major_version: "7"
+  tasks:
+    - group:
+        name: tomcat
+
+    - user:
+        name: tomcat
+        group: tomcat
+
+    # no official 7 dist, only mirrors
+    - name: download tomcat7 
+      get_url: url="http://apache.parentingamerica.com/tomcat/tomcat-{{ tomcat_major_version }}/v{{ tomcat_version }}/bin/apache-tomcat-{{ tomcat_version }}.tar.gz" dest="/opt/apache-tomcat.tar.gz" mode=0755
+      register: download 
+    
+    - name: extract archive
+      command: chdir=/usr/share /bin/tar xvf /opt/apache-tomcat.tar.gz -C /opt/ creates="/opt/apache-tomcat-{{ tomcat_version }}"
+
+    - name: Symlink install directory
+      file: src="/opt/apache-tomcat-{{ tomcat_version }}"  path=/usr/share/tomcat7 state=link
+
+    - name: Change ownership of Tomcat installation
+      file: path=/usr/share/tomcat7/ owner=tomcat group=tomcat state=directory recurse=yes
+    
+    - name: link the logs folders
+      file: src=/usr/share/tomcat7/logs dest=/var/log/tomcat7 state=link
+
+    - file: path=/etc/tomcat7 state=directory
+
+    - name: update permissions of logs
+      shell: chmod -R 777 /var/log/tomcat7
+
+    - name: link the deployments folders
+      file: src=/usr/share/tomcat7/webapps dest=/var/deployment state=link
+    
+    # remove the sample apps 
+    - name: remove sample apps
+      shell: rm -rf /var/deployment/*
+
+    - name: Install Tomcat init script
+      copy: src=tomcat7 dest=/etc/init.d/tomcat7 mode=0755
+
+    - name: Copy the tomcat7.conf 
+      copy: src=tomcat7.conf dest=/usr/share/tomcat7/conf/tomcat7.conf mode=0755
+
+    - name: Link the tomcat7.conf 
+      file: src=/usr/share/tomcat7/conf/tomcat7.conf dest=/etc/tomcat7/tomcat7.conf state=link
+
+    - name: link the executable
+      file: src=/usr/share/tomcat7/bin/startup.sh dest=/usr/sbin/tomcat7 state=link
+
+    - name: setup JAVA_OPTS
+      lineinfile: dest=/usr/share/tomcat7/conf/tomcat7.conf line="JAVA_OPTS=\"${JAVA_OPTS} -Djava.awt.headless=true -Xmx3g -XX:+UseConcMarkSweepGC\""
+
+    - name: setup JAVA_HOME
+      lineinfile: dest=/usr/share/tomcat7/conf/tomcat7.conf line="JAVA_HOME=\"/usr/lib/jvm/java-1.8.0\""
+
+    - name: stop tomcat7
+      service: name=tomcat7 state=stopped
