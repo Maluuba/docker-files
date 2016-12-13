@@ -14,11 +14,11 @@ ADD start-nginx.sh /opt/start-nginx.sh
 
 RUN chmod 700 /opt/start-nginx.sh
 
-WORKDIR /tmp/nginx-openssl/openssl-1.0.1i
+WORKDIR /tmp/nginx-openssl/openssl-1.1.0c
 RUN ./config
 
-WORKDIR /tmp/nginx-openssl/nginx-1.7.5-maluuba
-RUN ./configure.sh
+WORKDIR /tmp/nginx-openssl/nginx-1.11.7
+RUN ./configure --with-openssl=../openssl-1.0.1i --with-http_ssl_module --with-debug
 RUN make
 RUN make install
 RUN ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.0
