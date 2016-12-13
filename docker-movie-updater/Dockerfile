@@ -6,7 +6,7 @@ EXPOSE 8080
 RUN apt-get -qq update
 RUN apt-get -qq upgrade
 
-RUN apt-get -qq install openjdk-7-jre tomcat7 curl bash unzip gzip ftp cron wget
+RUN apt-get -qq -y install openjdk-7-jre tomcat7 curl bash unzip gzip ftp cron wget
 
 RUN mv /etc/cron.daily/logrotate /etc/cron.hourly/logrotate
 
