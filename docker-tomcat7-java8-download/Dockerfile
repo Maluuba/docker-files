@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:16.04
 MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 
 EXPOSE 8080
@@ -13,7 +13,7 @@ RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN apt-get -qq update
 RUN apt-get -qq upgrade
 
-RUN apt-get -qq install openjdk-7-jre tomcat7 curl bash unzip
+RUN apt-get -qq install openjdk-7-jre tomcat7 curl bash unzip logrotate
 RUN apt-get -qq install zulu-8
 
 
