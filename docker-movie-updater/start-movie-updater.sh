@@ -1,5 +1,5 @@
 #!/bin/sh
-
+#This is also movie-updater-iam
 
 if [ -f /deployment/init.sh ];
 then
@@ -9,16 +9,6 @@ then
 fi
 
 echo "Setting up AWS Client"
-
-mkdir -p ~/.aws
-cat <<EOF > ~/.aws/credentials
-[default]
-aws_access_key_id = ${AWS_KEY}
-aws_secret_access_key = ${AWS_SECRET}
-EOF
-
-export AWS_ACCESS_KEY_ID=${AWS_KEY}
-export AWS_SECRET_ACCESS_KEY=${AWS_SECRET}
 
 cat <<EOF > ~/.aws/config
 [default]
