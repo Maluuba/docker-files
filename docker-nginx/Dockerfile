@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu
 MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 
 EXPOSE 80
@@ -14,11 +14,11 @@ ADD start-nginx.sh /opt/start-nginx.sh
 
 RUN chmod 700 /opt/start-nginx.sh
 
-WORKDIR /tmp/nginx-openssl/openssl-1.1.0c
+WORKDIR /tmp/nginx-openssl/openssl-1.0.1i
 RUN ./config
 
-WORKDIR /tmp/nginx-openssl/nginx-1.11.7
-RUN ./configure --with-openssl=../openssl-1.1.0c --with-http_ssl_module --with-debug
+WORKDIR /tmp/nginx-openssl/nginx-1.7.5-maluuba
+RUN ./configure.sh
 RUN make
 RUN make install
 RUN ln -s /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.0
