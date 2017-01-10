@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:16.04
 MAINTAINER Maluuba Infrastructure Team <infrastructure@maluuba.com>
 
 EXPOSE 80
