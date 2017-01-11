@@ -14,7 +14,7 @@ ADD start-jetty.sh /opt/start-jetty.sh
 RUN chmod +x /opt/start-jetty.sh
 
 # Install Jetty
-ADD jetty-distribution-8.1.21.v20160908.tar.gz /opt/jetty.tar.gz
+COPY ./jetty-distribution-8.1.21.v20160908.tar.gz /opt/jetty.tar.gz
 RUN tar -xvf /opt/jetty.tar.gz -C /opt/
 RUN rm /opt/jetty.tar.gz
 RUN mv /opt/jetty-distribution-* /opt/jetty
